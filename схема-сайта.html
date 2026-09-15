@@ -1,0 +1,144 @@
+<meta charset="utf-8">
+<title>Схема сайта ИМАС-Техно</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{--ink:#161616;--paper:#F3F3F3;--white:#fff;--red:#C8352B;--muted:#6B6A66;--rule:#c9c9c6;--box:#e6e6e3;--box2:#d6d6d2;
+    --body:'Golos Text',Arial,sans-serif;--mono:'JetBrains Mono',Menlo,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);line-height:1.45;-webkit-font-smoothing:antialiased}
+  .top{padding:28px clamp(20px,3vw,40px) 18px;border-bottom:1px solid var(--rule);background:var(--white);position:sticky;top:0;z-index:5}
+  .top h1{font-size:1.25rem;margin:0 0 4px;font-weight:600}
+  .top p{margin:0;color:var(--muted);font-size:.93rem;max-width:90ch}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .legend i{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--rule)}
+  .board{display:flex;gap:28px;padding:28px clamp(20px,3vw,40px) 60px;overflow-x:auto;align-items:flex-start}
+  .page{flex:none;width:320px}
+  .page h2{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;color:var(--ink)}
+  .page .url{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:12px}
+  .frame{background:var(--white);border:1px solid var(--rule);padding:10px;display:flex;flex-direction:column;gap:8px}
+  .b{position:relative;background:var(--box);border:1px solid var(--rule);padding:10px 10px 10px 40px;min-height:56px}
+  .b.dark{background:#2b2b2b;color:#f3f3f3;border-color:#2b2b2b}
+  .b.dark .why{color:#bdbdb9}
+  .b.tall{min-height:120px}
+  .b.photo{background:repeating-linear-gradient(45deg,var(--box),var(--box) 6px,var(--box2) 6px,var(--box2) 12px)}
+  .b .n{position:absolute;left:10px;top:10px;font-family:var(--mono);font-size:11px;color:var(--red);font-weight:500}
+  .b b{display:block;font-weight:600;font-size:.92rem;line-height:1.25}
+  .b .why{font-size:.8rem;color:var(--muted);margin-top:3px}
+  .row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+  .row.two{grid-template-columns:1fr 1fr}
+  .row.four{grid-template-columns:repeat(4,1fr)}
+  .row span{background:var(--white);border:1px solid var(--rule);height:34px;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--muted)}
+  .b.dark .row span{background:#3a3a3a;border-color:#4a4a4a;color:#ddd}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+  .split span{border:1px solid var(--rule);background:var(--white);height:70px;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--muted)}
+  .split span.ph{background:repeating-linear-gradient(45deg,#fff,#fff 6px,var(--box) 6px,var(--box) 12px)}
+  .note{margin:6px 0 0;font-size:.8rem;color:var(--muted)}
+  .rules{padding:0 clamp(20px,3vw,40px) 60px;max-width:900px}
+  .rules h3{font-size:1rem;margin:0 0 10px}
+  .rules ol{margin:0;padding-left:20px;color:#333;font-size:.95rem}
+  .rules li{margin:6px 0}
+</style>
+
+<div class="top">
+  <h1>Схема сайта ИМАС-Техно. Только структура, без дизайна</h1>
+  <p>Каждый серый блок это один экран или секция. Красный номер нужен, чтобы ссылаться на блок словами: «на главной блок 4 выше блока 3», «убрать блок 5». Подпись под названием отвечает на вопрос «зачем этот блок посетителю». Полоски означают фотографию. Тёмные блоки будут тёмными на сайте.</p>
+  <div class="legend"><span><i style="background:var(--box)"></i>обычный блок</span><span><i style="background:#2b2b2b"></i>тёмный блок</span><span><i style="background:repeating-linear-gradient(45deg,#e6e6e3,#e6e6e3 3px,#d6d6d2 3px,#d6d6d2 6px)"></i>фото</span></div>
+</div>
+
+<div class="board">
+
+  <div class="page">
+    <h2>Главная</h2><div class="url">/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b><div class="why">Логотип · Главная · Каталог · Услуги · О компании · Контакты · телефон. Одинаковая на всех страницах.</div></div>
+      <div class="b tall"><span class="n">1</span><b>Первый экран</b><div class="why">Кто вы одной фразой. Слева текст и две кнопки «Каталог» и «Запросить расчёт», справа фото линии.</div><div class="split"><span>текст + кнопки</span><span class="ph">фото</span></div></div>
+      <div class="b"><span class="n">2</span><b>Три продукта</b><div class="why">Одинаковые карточки: фото, название, одна цифра, «подробнее». Только то, что есть.</div><div class="row"><span>Айвери</span><span>Транспортёр</span><span>МЕРА</span></div></div>
+      <div class="b"><span class="n">3</span><b>Как мы работаем</b><div class="why">Четыре шага в строку, чтобы снять страх «а что дальше после звонка».</div><div class="row four"><span>расчёт</span><span>производство</span><span>монтаж</span><span>сервис</span></div></div>
+      <div class="b"><span class="n">4</span><b>Услуга протравливания</b><div class="why">Один блок с фото и восемью этапами цикла. Ведёт на страницу Услуги.</div><div class="split"><span class="ph">фото</span><span>8 этапов</span></div></div>
+      <div class="b dark"><span class="n">5</span><b>Почему вам верят</b><div class="why">Три факта в одну строку и один отзыв. Без повторов «с 2020» в других местах.</div><div class="row"><span>факт</span><span>факт</span><span>факт</span></div></div>
+      <div class="b"><span class="n">6</span><b>Заявка</b><div class="why">Короткая форма: имя, телефон, что интересует. Рядом телефон и адрес.</div></div>
+      <div class="b dark"><span class="n">7</span><b>Подвал</b><div class="why">Меню, контакты, реквизиты, политика. Одинаковый везде.</div></div>
+    </div>
+    <p class="note">3D-модель с главной убираем: она живёт на странице Айвери, где её крутят осознанно.</p>
+  </div>
+
+  <div class="page">
+    <h2>Каталог</h2><div class="url">/katalog/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b></div>
+      <div class="b"><span class="n">1</span><b>Заголовок страницы</b><div class="why">«Оборудование» и одна строка: что делаем, где, цена по запросу.</div></div>
+      <div class="b tall"><span class="n">2</span><b>Карточки продуктов</b><div class="why">Те же карточки, что на главной. Пока три. Неготовые не показываем совсем, вместо «страница готовится».</div><div class="row"><span>Айвери</span><span>Транспортёр</span><span>МЕРА</span></div></div>
+      <div class="b"><span class="n">3</span><b>Линия под ключ</b><div class="why">Один широкий блок с фото: «собираем участок целиком». Для тех, кому нужна не машина, а решение.</div></div>
+      <div class="b"><span class="n">4</span><b>Заявка</b></div>
+      <div class="b dark"><span class="n">5</span><b>Подвал</b></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2>Айвери</h2><div class="url">/katalog/ayveri/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b></div>
+      <div class="b tall dark"><span class="n">1</span><b>Первый экран продукта</b><div class="why">Название, одна фраза, кнопка «Запросить цену». Справа фото машины, под ним 4–5 миниатюр.</div><div class="split"><span style="background:#3a3a3a;border-color:#4a4a4a;color:#ddd">текст + кнопка</span><span class="ph">фото</span></div></div>
+      <div class="b"><span class="n">2</span><b>Для чего машина</b><div class="why">Три коротких пункта: что делает, кому подходит, чем отличается. Ответ на первый вопрос посетителя.</div><div class="row"><span>что</span><span>кому</span><span>чем</span></div></div>
+      <div class="b tall"><span class="n">3</span><b>Конфигуратор типоразмеров</b><div class="why">Кнопки R-300…R-900, 3D-модель, характеристики выбранной, кнопка «Запросить цену R-700».</div><div class="split"><span>3D</span><span>характеристики</span></div></div>
+      <div class="b"><span class="n">4</span><b>Из чего состоит</b><div class="why">Фото линии с номерами узлов и список 01–06.</div><div class="split"><span class="ph">фото с номерами</span><span>список</span></div></div>
+      <div class="b"><span class="n">5</span><b>Гибкость настроек</b><div class="why">Два текста заказчика про режимы под любое зерно и слоган.</div><div class="row two"><span>текст</span><span>текст</span></div></div>
+      <div class="b"><span class="n">6</span><b>Таблица моделей</b><div class="why">Все четыре модели в одной таблице, R-700 выделен.</div></div>
+      <div class="b"><span class="n">7</span><b>Заявка</b></div>
+      <div class="b dark"><span class="n">8</span><b>Подвал</b></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2>Услуги</h2><div class="url">/uslugi/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b></div>
+      <div class="b"><span class="n">1</span><b>Заголовок</b><div class="why">«Подготовка семян» и одна строка про полный цикл на вашей площадке.</div></div>
+      <div class="b tall"><span class="n">2</span><b>Восемь этапов</b><div class="why">Приёмка → очистка → удельный вес → фотосепарация → протравливание → инкрустация → дражирование → упаковка. По одной строке на этап.</div><div class="row four"><span>01</span><span>02</span><span>03</span><span>04</span></div><div class="row four"><span>05</span><span>06</span><span>07</span><span>08</span></div></div>
+      <div class="b"><span class="n">3</span><b>Протравливание подробно</b><div class="why">Фото и текст заказчика: до 4 компонентов, подсушка, сухие компоненты. Кнопка «Рассчитать партию».</div><div class="split"><span class="ph">фото</span><span>текст</span></div></div>
+      <div class="b"><span class="n">4</span><b>Монтаж и сервис</b><div class="why">Два коротких блока в строку.</div><div class="row two"><span>монтаж</span><span>сервис</span></div></div>
+      <div class="b"><span class="n">5</span><b>Заявка</b></div>
+      <div class="b dark"><span class="n">6</span><b>Подвал</b></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2>О компании</h2><div class="url">/o-kompanii/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b></div>
+      <div class="b"><span class="n">1</span><b>Заголовок</b><div class="why">«ИМАС-Техно» и два предложения: с 2020 года, Воронеж, что производим.</div></div>
+      <div class="b photo"><span class="n">2</span><b>Фото производства на всю ширину</b></div>
+      <div class="b"><span class="n">3</span><b>Три принципа</b><div class="why">Прочно · Просто · Чётко, с старого сайта. По одному предложению.</div><div class="row"><span>прочно</span><span>просто</span><span>чётко</span></div></div>
+      <div class="b"><span class="n">4</span><b>Цифры</b><div class="why">Появится, когда заказчик даст факты: машин у клиентов, регионы, гарантия. До этого блок не показываем.</div></div>
+      <div class="b"><span class="n">5</span><b>Отзывы</b><div class="why">Один есть, место под ещё два.</div></div>
+      <div class="b"><span class="n">6</span><b>Заявка</b></div>
+      <div class="b dark"><span class="n">7</span><b>Подвал</b></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <h2>Контакты</h2><div class="url">/kontakty/</div>
+    <div class="frame">
+      <div class="b dark"><span class="n">0</span><b>Шапка</b></div>
+      <div class="b"><span class="n">1</span><b>Заголовок</b><div class="why">«Контакты» и одна строка.</div></div>
+      <div class="b tall"><span class="n">2</span><b>Адрес, телефоны, почта, режим</b><div class="why">Слева крупно. Справа форма заявки, полная: имя, телефон, культура и объём, оборудование, комментарий, согласие.</div><div class="split"><span>контакты</span><span>форма</span></div></div>
+      <div class="b"><span class="n">3</span><b>Карта</b><div class="why">Яндекс Карта с меткой. Добавим при выкладке на хостинг.</div></div>
+      <div class="b"><span class="n">4</span><b>Реквизиты</b><div class="why">ООО, ИНН, ОГРН одной строкой.</div></div>
+      <div class="b dark"><span class="n">5</span><b>Подвал</b></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="rules">
+  <h3>Правила, которые держат сайт целым</h3>
+  <ol>
+    <li>Одна шапка и один подвал на всех страницах, без исключений.</li>
+    <li>Один вид карточки продукта везде: фото, название, одна цифра, стрелка.</li>
+    <li>Каждая страница заканчивается одинаковым блоком «Заявка».</li>
+    <li>Тёмные блоки только два на страницу: первый экран продукта или «почему верят», и подвал. Остальное светлое.</li>
+    <li>Один заголовок-предложение на блок, не больше трёх предложений текста под ним.</li>
+    <li>Чего нет в материалах, того нет на сайте. Никаких «страница готовится» и «уточняется».</li>
+    <li>3D только на странице Айвери, где её крутят намеренно.</li>
+  </ol>
+</div>

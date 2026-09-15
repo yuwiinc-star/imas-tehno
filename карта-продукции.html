@@ -1,0 +1,114 @@
+<meta charset="utf-8">
+<title>Карта продукции ИМАС-Техно</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{--paper:#F3F2EE;--white:#FFFFFF;--ink:#171716;--muted:#6E6D68;--rule:rgba(23,23,22,.13);--rule-s:rgba(23,23,22,.07);
+    --red:#C8352B;--red-bg:rgba(200,53,43,.09);--ok:#2E6B3A;--ok-bg:rgba(46,107,58,.1);--ask:#8A5A00;--ask-bg:rgba(184,124,0,.13);--head:#E9E8E3;
+    --display:'Unbounded',Arial,sans-serif;--body:'Golos Text',Arial,sans-serif;--mono:'JetBrains Mono',Menlo,monospace}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#141514;--white:#1C1D1C;--ink:#ECECE8;--muted:#9C9C97;--rule:rgba(255,255,255,.14);--rule-s:rgba(255,255,255,.07);
+    --red:#E9584D;--red-bg:rgba(233,88,77,.14);--ok:#7FC58F;--ok-bg:rgba(127,197,143,.14);--ask:#E3B25A;--ask-bg:rgba(227,178,90,.16);--head:#232423}}
+  :root[data-theme="dark"]{--paper:#141514;--white:#1C1D1C;--ink:#ECECE8;--muted:#9C9C97;--rule:rgba(255,255,255,.14);--rule-s:rgba(255,255,255,.07);
+    --red:#E9584D;--red-bg:rgba(233,88,77,.14);--ok:#7FC58F;--ok-bg:rgba(127,197,143,.14);--ask:#E3B25A;--ask-bg:rgba(227,178,90,.16);--head:#232423}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-block:40px 80px;padding-inline:clamp(16px,4vw,48px)}
+  .w{max-width:1180px;margin:0 auto}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.05;letter-spacing:-.01em;margin:10px 0 12px;text-wrap:balance}
+  .lead{color:var(--muted);max-width:66ch;margin:0 0 20px}
+  .legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:4px 10px;border-radius:20px;white-space:nowrap}
+  .pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.ask{background:var(--ask-bg);color:var(--ask)}.pill.new{background:var(--red-bg);color:var(--red)}
+  section{margin-bottom:44px}
+  h2{font-family:var(--body);font-weight:600;font-size:1.2rem;margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
+  h2 .n{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--red);letter-spacing:.08em}
+  .why{color:var(--muted);margin:0 0 14px;max-width:70ch}
+  .tw{overflow-x:auto;background:var(--white);border:1px solid var(--rule);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:900px}
+  th{text-align:left;font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--head);padding:10px 14px;border-bottom:1px solid var(--rule)}
+  td{padding:12px 14px;border-bottom:1px solid var(--rule-s);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.name{font-weight:600;min-width:180px}
+  td.name small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+  td.num{font-family:var(--mono);font-size:13.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.num small{color:var(--muted);display:block;white-space:normal;font-family:var(--body);font-size:12.5px}
+  td.src{font-size:13px;color:var(--muted);min-width:170px}
+  td.st{white-space:nowrap}
+  tr.group td{background:var(--head);font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding:8px 14px;border-bottom:1px solid var(--rule)}
+  .tree{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .tree>div{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:16px 18px}
+  .tree b{display:block;font-size:14px;margin-bottom:6px}
+  .tree ul{margin:0;padding-left:18px;color:var(--muted);font-size:13.5px}
+  .tree li{margin:2px 0}
+  .tree .lvl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+  @media(max-width:760px){.tree{grid-template-columns:1fr}}
+  @media print{body{background:#fff;padding:0}.tw{border:0}section{break-inside:avoid}}
+</style>
+<div class="w">
+  <div class="eyebrow">Сайт imas-tehno.ru · рабочий документ · 15 сентября 2026</div>
+  <h1>Карта продукции и услуг ИМАС-Техно</h1>
+  <p class="lead">Всё, что компания производит и делает, собранное из трёх презентаций, старого сайта, фотографий линии и CAD-сборок. Таблица нужна, чтобы заново продумать логику каталога на сайте. Каждая строка помечена, откуда взята и что надо подтвердить у заказчика.</p>
+  <div class="legend">
+    <span class="pill ok">Подтверждено</span><span class="pill ask">Уточнить у заказчика</span><span class="pill new">Нет на старом сайте</span>
+  </div>
+
+  <section>
+    <h2><span class="n">01</span>Машины</h2>
+    <p class="why">Три семейства с собственными названиями. Айвери продаётся отдельно и внутри линии, транспортёр и МЕРА чаще идут в составе линии.</p>
+    <div class="tw"><table>
+      <tr><th>Семейство</th><th>Модель</th><th>Что делает</th><th>Ключевые цифры</th><th>Источник</th><th>Статус</th></tr>
+      <tr class="group"><td colspan="6">Протравливание · Айвери</td></tr>
+      <tr><td class="name">Айвери<small>протравитель семян, порционный</small></td><td class="num">R-300</td><td>Малые партии, семенные участки</td><td class="num">до 1 т/ч<small>ротор 300 мм</small></td><td class="src">Презентация Айвери</td><td class="st"><span class="pill ask">мощность, габариты</span></td></tr>
+      <tr><td class="name">Айвери<small>флагман, основной товар сайта</small></td><td class="num">R-700</td><td>Роторно-статорное нанесение, дозирование по убыли веса, ПЛК, футеровка PE-1000</td><td class="num">до 6,5 т/ч · 6,2 кВт<small>партия 55 л · 4 жидких + 2 сухих дозатора · расход 3,5 л/т на сое против 4,5 у поточных</small></td><td class="src">Презентация Айвери, фото линии, CAD ПРТ.000.000</td><td class="st"><span class="pill ok">подтверждено</span></td></tr>
+      <tr><td class="name">Айвери</td><td class="num">R-800</td><td>Средние семзаводы</td><td class="num">до 7,5 т/ч<small>ротор 800 мм</small></td><td class="src">Презентация Айвери</td><td class="st"><span class="pill ask">мощность, партия, габариты</span></td></tr>
+      <tr><td class="name">Айвери</td><td class="num">R-900</td><td>Крупные семзаводы</td><td class="num">до 10 т/ч<small>ротор 900 мм</small></td><td class="src">Презентация Айвери</td><td class="st"><span class="pill ask">мощность, партия, габариты</span></td></tr>
+      <tr class="group"><td colspan="6">Транспортировка · Z-транспортёр</td></tr>
+      <tr><td class="name">Транспортёр с качающимися ковшами<small>бережная подача семян без травмирования</small></td><td class="num">Z · I · C · E</td><td>Четыре формы трассы: Z-образная, вертикальная, C-образная, горизонтально-вертикальная. Ковши не пересыпают зерно на поворотах</td><td class="num">10 или 20 м³/ч</td><td class="src">Презентация Z-транспортёр</td><td class="st"><span class="pill ask">высоты, длины, чем отличаются модификации</span></td></tr>
+      <tr class="group"><td colspan="6">Фасовка · МЕРА</td></tr>
+      <tr><td class="name">МЕРА-1000<small>весовой дозатор</small></td><td class="num">1000</td><td>Наполнение биг-бэгов по весу, станция с подвесом мешка</td><td class="num">до 1000 кг<small>станция У-02: 3,3 × 3,6 × 5,1 м</small></td><td class="src">Презентация МЕРА, CAD У-02.000.000</td><td class="st"><span class="pill ok">подтверждено</span></td></tr>
+      <tr><td class="name">МЕРА-80<small>весовой дозатор</small></td><td class="num">80</td><td>Фасовка в мешки</td><td class="num">до 80 кг</td><td class="src">Старый сайт, упоминание</td><td class="st"><span class="pill ask">производительность, точность, фото</span></td></tr>
+      <tr class="group"><td colspan="6">Не названо</td></tr>
+      <tr><td class="name">«И многое другое»</td><td class="num">—</td><td>Так написано в презентациях. Что именно, неизвестно</td><td class="num">—</td><td class="src">Презентации</td><td class="st"><span class="pill ask">список</span></td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>Узлы линии собственного производства</h2>
+    <p class="why">Видны на фотографиях линии и есть в CAD-сборках, но нигде не описаны как продукты. На сайте их сейчас нет вообще. Это отдельный слой каталога: то, из чего собирается линия вокруг Айвери.</p>
+    <div class="tw"><table>
+      <tr><th>Узел</th><th>Что делает</th><th>Ключевые цифры</th><th>Источник</th><th>Статус</th></tr>
+      <tr><td class="name">Ёмкость смешивания<small>ЕСД.000.000</small></td><td>Приготовление рабочего раствора препаратов с мешалкой. В линии стоят две</td><td class="num">0,9 × 0,8 × 1,5 м</td><td class="src">CAD, фото линии</td><td class="st"><span class="pill new">нет на сайте</span> <span class="pill ask">объём, материал</span></td></tr>
+      <tr><td class="name">Ёмкость дозирования<small>ЕД.000.000, на тензодатчиках</small></td><td>Весовая подача жидкого препарата в машину</td><td class="num">0,47 × 0,52 × 1,61 м</td><td class="src">CAD, фото линии</td><td class="st"><span class="pill new">нет на сайте</span> <span class="pill ask">объём, точность</span></td></tr>
+      <tr><td class="name">Перистальтические насосы</td><td>Перекачка препаратов без контакта с механикой</td><td class="num">—</td><td class="src">Фото линии</td><td class="st"><span class="pill ask">своё или покупное</span></td></tr>
+      <tr><td class="name">Нории</td><td>Вертикальная подача зерна между этапами</td><td class="num">—</td><td class="src">Фото линии</td><td class="st"><span class="pill ask">своё или покупное, производительность</span></td></tr>
+      <tr><td class="name">Аспирация</td><td>Отвод пыли на загрузке и выгрузке</td><td class="num">—</td><td class="src">Фото линии</td><td class="st"><span class="pill ask">своё или покупное</span></td></tr>
+      <tr><td class="name">Шкаф управления с панелью оператора<small>ПЛК + HMI</small></td><td>Управление всей линией, рецепты, режимы «на лету»</td><td class="num">—</td><td class="src">Фото линии, презентация Айвери</td><td class="st"><span class="pill ask">своя разработка или интегратор</span></td></tr>
+      <tr><td class="name">Металлоконструкции<small>рамы, площадки, лестницы</small></td><td>Несущая часть линии, изготавливается в цехе</td><td class="num">—</td><td class="src">Фото линии, старый сайт</td><td class="st"><span class="pill ok">подтверждено</span></td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>Услуги</h2>
+    <p class="why">Две группы: услуги вокруг оборудования и услуга обработки семян на своей площадке. Вторая на старом сайте почти не видна, хотя приносит клиентов, которым машина не нужна.</p>
+    <div class="tw"><table>
+      <tr><th>Услуга</th><th>Что входит</th><th>Ключевые цифры</th><th>Источник</th><th>Статус</th></tr>
+      <tr class="group"><td colspan="5">Вокруг оборудования</td></tr>
+      <tr><td class="name">Расчёт и проектирование линии</td><td>Подбор типоразмера под культуру и объём в сезон, состав линии, чертежи размещения в цехе</td><td class="num">—</td><td class="src">Старый сайт, отзыв клиента</td><td class="st"><span class="pill ok">подтверждено</span></td></tr>
+      <tr><td class="name">Производство и сборка</td><td>Собственный цех в Воронеже, российские комплектующие, проверка на стенде</td><td class="num">с 2020 года</td><td class="src">Старый сайт</td><td class="st"><span class="pill ask">площадь цеха, штат</span></td></tr>
+      <tr><td class="name">Доставка, монтаж, пусконаладка</td><td>Выезд на объект, обвязка, запуск, обучение оператора</td><td class="num">вся Россия</td><td class="src">Решение заказчика</td><td class="st"><span class="pill ok">подтверждено</span></td></tr>
+      <tr><td class="name">Сервис, гарантия, запчасти</td><td>Выезд инженера, футеровка и изнашиваемые детали в наличии</td><td class="num">—</td><td class="src">Старый сайт</td><td class="st"><span class="pill ask">срок гарантии, скорость выезда</span></td></tr>
+      <tr class="group"><td colspan="5">Обработка семян на площадке ИМАС</td></tr>
+      <tr><td class="name">Протравливание партий<small>инкрустация, дражирование</small></td><td>Порционная обработка с подсушкой между нанесениями. До четырёх компонентов за цикл. Сухие компоненты: инокулянт, тальк, красители, смесь для дражирования</td><td class="num">до 4 компонентов</td><td class="src">Тексты заказчика, листовка конкурента</td><td class="st"><span class="pill ask">мин. партия, сроки, цена или по запросу</span></td></tr>
+      <tr><td class="name">Подготовка семян полного цикла</td><td>Приёмка через завальную яму → очистка и калибровка → разделение по удельному весу → фотосепарация → протравливание → инкрустация → дражирование → упаковка</td><td class="num">8 этапов</td><td class="src">Тексты заказчика</td><td class="st"><span class="pill ask">какие этапы на своём оборудовании, какие на партнёрском</span></td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>Как это может лечь в каталог</h2>
+    <p class="why">Предложение для обсуждения, не решение. Сейчас каталог показывает три машины в один ряд. Из таблицы видно три уровня, и посетитель приходит на разные.</p>
+    <div class="tree">
+      <div><div class="lvl">Уровень 1 · зачем</div><b>Решения</b><ul><li>Линия протравливания «под ключ»</li><li>Участок фасовки</li><li>Обработка вашей партии у нас</li></ul></div>
+      <div><div class="lvl">Уровень 2 · что купить</div><b>Машины</b><ul><li>Айвери R-300 … R-900</li><li>Z-транспортёр Z / I / C / E</li><li>МЕРА-80, МЕРА-1000</li></ul></div>
+      <div><div class="lvl">Уровень 3 · из чего собрано</div><b>Узлы</b><ul><li>Ёмкости смешивания и дозирования</li><li>Нории, аспирация, насосы</li><li>Шкаф управления, металлоконструкции</li></ul></div>
+    </div>
+  </section>
+</div>

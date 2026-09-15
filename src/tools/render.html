@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><title>render</title><style>body{margin:0;background:#111}canvas{display:block}</style>
+<canvas id="c" width="1800" height="1400"></canvas><pre id="log" style="color:#fff"></pre>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js"></script>
+<script>
+const q=new URLSearchParams(location.search); const file=q.get('f'); const name=q.get('name'); const yaw=+(q.get('yaw')||35); const pitch=+(q.get('pitch')||14); const colored=q.get('colored')==='1';
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,preserveDrawingBuffer:true}); renderer.setPixelRatio(1); renderer.setSize(1800,1400,false); renderer.outputEncoding=THREE.sRGBEncoding; renderer.setClearColor(0,0);
+const scene=new THREE.Scene(); const cam=new THREE.PerspectiveCamera(26,1800/1400,0.05,100);
+scene.add(new THREE.HemisphereLight(0xffffff,0x333333,0.95));
+const key=new THREE.DirectionalLight(0xffffff,1.1); key.position.set(4,8,5); scene.add(key);
+const rim=new THREE.DirectionalLight(0xffffff,0.9); rim.position.set(-6,4,-5); scene.add(rim);
+const fill=new THREE.DirectionalLight(0xffffff,0.35); fill.position.set(0,-2,6); scene.add(fill);
+const steel=new THREE.MeshStandardMaterial({color:parseInt(q.get("steel")||"C9C6BF",16),roughness:0.5,metalness:0.45});
+const loader=new THREE.GLTFLoader(); loader.setMeshoptDecoder(window.MeshoptDecoder);
+loader.load(file, g=>{ const root=g.scene; root.rotation.x=-Math.PI/2;
+  root.traverse(o=>{ if(o.isMesh){ if(colored){ o.material.metalness=Math.min(o.material.metalness,0.4); o.material.roughness=Math.max(o.material.roughness,0.5);} else o.material=steel; } });
+  const wrap=new THREE.Group(); wrap.add(root); const box=new THREE.Box3().setFromObject(wrap); const size=box.getSize(new THREE.Vector3()); const c=box.getCenter(new THREE.Vector3());
+  root.position.sub(c); wrap.rotation.y=THREE.MathUtils.degToRad(yaw); scene.add(wrap);
+  const R=size.length(); const p=THREE.MathUtils.degToRad(pitch); const d=R*2.05;
+  cam.position.set(0, Math.sin(p)*d, Math.cos(p)*d); cam.lookAt(0,0,0); cam.near=R*0.01; cam.far=R*30; cam.updateProjectionMatrix();
+  renderer.render(scene,cam);
+  fetch('http://127.0.0.1:8766/save?name='+encodeURIComponent(name),{method:'POST',body:canvas.toDataURL('image/png')}).then(r=>r.text()).then(t=>{ document.getElementById('log').textContent='saved '+name+' '+t; }).catch(e=>{ document.getElementById('log').textContent='ERR '+e; });
+});
+</script>
