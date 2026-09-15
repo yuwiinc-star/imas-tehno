@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ИМАС-Техно</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
@@ -181,30 +182,36 @@
   .cb .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
   .cb .acts .btn{padding:11px 16px;font-size:14px}
   /* ============ catalog list (rows) ============ */
-  .ptitle.narrow{grid-template-columns:1fr;max-width:1100px;gap:14px}
+  /* ============ catalog: sidebar categories + card grid ============ */
+  .ptitle.narrow{grid-template-columns:1fr;max-width:1400px;margin-left:auto;margin-right:auto;gap:14px}
   .ptitle.narrow .lead{justify-self:start;max-width:64ch}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;max-width:1100px;margin:0 auto 18px}
-  .chip{padding:9px 16px;border-radius:999px;border:1px solid var(--rule-l);background:var(--card);color:var(--txt);font-family:var(--body);font-size:14px;font-weight:500;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
-  .chip:hover{border-color:var(--rule-h)}
-  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-  .clist{max-width:1100px;margin:0 auto;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-  .crow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 32px;align-items:center;padding:26px 30px;border-top:1px solid var(--rule);text-decoration:none;color:inherit;transition:background .15s}
-  .crow:first-child{border-top:0}
-  .crow:hover{background:var(--bg)}
-  .crow[hidden]{display:none}
-  .crow .cat{display:inline-block;font-size:12.5px;font-weight:600;color:var(--red);margin-bottom:8px}
-  .crow h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.2rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 8px}
-  .crow .nm p{margin:0;font-size:15px;color:var(--txt-2);line-height:1.5;max-width:66ch}
-  .crow .sp{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:14px;font-size:14px;line-height:1.5}
-  .crow .sp div{display:inline}
-  .crow .sp div+div::before{content:"·";margin:0 10px;color:var(--muted-l)}
-  .crow .sp span{color:var(--muted)}
-  .crow .sp span::after{content:": "}
-  .crow .sp b{font-weight:600;color:var(--txt)}
-  .crow .go{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:600;font-size:15px;color:var(--red)}
-  .crow .go::after{content:"→";transition:transform .2s}
-  .crow:hover .go::after{transform:translateX(4px)}
-  @media(max-width:760px){.crow{grid-template-columns:1fr;gap:14px;padding:20px}}
+  .catwrap{display:grid;grid-template-columns:230px minmax(0,1fr);gap:48px;align-items:start;max-width:1400px;margin:0 auto}
+  .catnav{position:sticky;top:calc(var(--navh) + 24px);display:flex;flex-direction:column;gap:4px}
+  .catnav .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:0 14px;margin-bottom:8px}
+  .chip{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;padding:11px 14px;border-radius:10px;border:0;background:transparent;color:var(--txt-2);font-family:var(--body);font-size:15px;font-weight:500;cursor:pointer;transition:background .15s,color .15s}
+  .chip:hover{background:var(--card);color:var(--txt)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .chip small{font-family:var(--mono);font-size:12px;color:var(--muted-l)}
+  .chip[aria-pressed="true"] small{color:rgba(255,255,255,.6)}
+  .catgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .pcard{display:flex;flex-direction:column;gap:18px;padding:28px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .pcard:hover{border-color:var(--rule-h);transform:translateY(-2px);box-shadow:0 14px 34px rgba(23,23,22,.08)}
+  .pcard[hidden]{display:none}
+  .pcard .cat{font-size:12.5px;font-weight:600;color:var(--red)}
+  .pcard h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.3rem;line-height:1.15;letter-spacing:-.01em;margin:6px 0 10px}
+  .pcard .hd p{margin:0;font-size:15px;color:var(--txt-2);line-height:1.5}
+  .pcard .st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .pcard .st div{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;min-width:0}
+  .pcard .st span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;line-height:1.3}
+  .pcard .st b{display:block;font-size:15px;font-weight:600;line-height:1.3;color:var(--txt)}
+  .pcard .ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--rule)}
+  .pcard .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--red);white-space:nowrap}
+  .pcard .go::after{content:"→";transition:transform .2s}
+  .pcard:hover .go::after{transform:translateX(4px)}
+  .pcard .ft small{font-size:13.5px;color:var(--muted)}
+  @media(max-width:1100px){.catwrap{grid-template-columns:1fr;gap:20px}.catnav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}.catnav .lbl{display:none}.chip{background:var(--card)}}
+  @media(max-width:760px){.catgrid{grid-template-columns:1fr}.pcard{padding:22px}}
+  @media(max-width:480px){.pcard .st{grid-template-columns:1fr 1fr}}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
@@ -245,7 +252,8 @@
   .feat .kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .feat .kf div{border:1px solid var(--rule);border-left:3px solid var(--red);border-radius:12px;padding:12px 16px 13px;background:var(--bg)}
   .feat .kf span{display:block;font-size:12.5px;color:var(--txt-2);line-height:1.3;margin-bottom:6px}
-  .feat .kf b{display:block;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1;color:var(--txt);white-space:nowrap}
+  .feat .txt,.feat .pic{min-width:0}
+  .feat .kf b{display:block;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;color:var(--txt)}
   .feat .kf b small{font-family:var(--body);font-weight:500;font-size:.55em;color:var(--muted);letter-spacing:0}
   .feat ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
   .feat li{position:relative;padding-left:26px;font-size:15px;line-height:1.5;color:var(--txt-2)}
@@ -477,7 +485,7 @@
 <!-- ================= КАТАЛОГ ================= -->
 <main id="katalog" hidden>
   <div class="w ptitle narrow"><div><div class="mono">Что производим</div><h1>Оборудование</h1></div><p class="lead">Проектируем и собираем в Воронеже, ставим по всей России. Цена по запросу под вашу конфигурацию.</p></div>
-  <section class="sec" style="padding-top:28px"><div class="w"><div class="chips" data-chips="rows"></div><div class="clist" data-rows></div></div></section>
+  <section class="sec" style="padding-top:28px"><div class="w"><div class="catwrap"><aside class="catnav" data-chips="rows"></aside><div class="catgrid" data-rows></div></div></div></section>
   <section class="sec white" hidden><div class="w">
     <div class="head"><div><div class="mono">Под ключ</div><h2>Линия целиком, а не машина отдельно</h2></div><a class="lnk" href="#/kontakty"><span>Обсудить проект</span><span>→</span></a></div>
     <div class="split">
@@ -561,7 +569,7 @@
 <!-- ================= УСЛУГИ ================= -->
 <main id="uslugi" hidden>
   <div class="w ptitle narrow"><div><div class="mono">Что делаем</div><h1>Услуги</h1></div><p class="lead">Полный цикл подготовки семян на нашей площадке — от приёмки зерна до упаковки, плюс монтаж и сервис оборудования по всей России.</p></div>
-  <section class="sec" style="padding-top:28px"><div class="w"><div class="chips" data-chips="srows"></div><div class="clist" data-srows></div></div></section>
+  <section class="sec" style="padding-top:28px"><div class="w"><div class="catwrap"><aside class="catnav" data-chips="srows"></aside><div class="catgrid" data-srows></div></div></div></section>
   <section class="sec" hidden><div class="w">
     <div class="cells">
       <div><div class="n">01</div><h3>Приёмка</h3><p>Приём зерна через завальную яму.</p></div>
@@ -695,22 +703,24 @@ function card(p,full){
 document.querySelectorAll('[data-cards]').forEach(g=>P.forEach(p=>g.appendChild(card(p, g.classList.contains('grid')))));
 /* ---------- catalog rows: equipment and services in one format ---------- */
 function row(p){
-  const a=document.createElement('a'); a.className='crow'; a.dataset.cat=p.cat;
+  const a=document.createElement('a'); a.className='pcard'; a.dataset.cat=p.cat;
   a.href=p.link?'#/'+p.id:'#/kontakty';
   const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
-  a.innerHTML=`<div class="nm"><span class="cat">${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="sp">${specs}</div></div><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span>`;
+  a.innerHTML=`<div class="hd"><span class="cat">${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p></div><div class="st">${specs}</div>
+  <div class="ft"><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span><small>${p.link?'Цена по запросу':'Расчёт под задачу'}</small></div>`;
   return a;
 }
 function renderList(key,items){
   document.querySelectorAll(`[data-${key}]`).forEach(g=>items.forEach(p=>g.appendChild(row(p))));
   document.querySelectorAll(`[data-chips="${key}"]`).forEach(c=>{
-    const cats=['Все',...new Set(items.map(p=>p.cat))];
-    c.innerHTML=cats.map((n,i)=>`<button class="chip" aria-pressed="${i===0}" data-cat="${n}">${n}</button>`).join('');
+    const count={}; items.forEach(p=>count[p.cat]=(count[p.cat]||0)+1);
+    const cats=[['Все',items.length],...Object.entries(count)];
+    c.innerHTML=`<div class="lbl">Категории</div>`+cats.map(([n,k],i)=>`<button class="chip" aria-pressed="${i===0}" data-cat="${n}">${n}<small>${k}</small></button>`).join('');
     c.addEventListener('click',e=>{
       const b=e.target.closest('.chip'); if(!b) return;
       c.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
       const list=c.parentElement.querySelector(`[data-${key}]`);
-      list.querySelectorAll('.crow').forEach(r=>r.hidden=b.dataset.cat!=='Все'&&r.dataset.cat!==b.dataset.cat);
+      list.querySelectorAll('.pcard').forEach(r=>r.hidden=b.dataset.cat!=='Все'&&r.dataset.cat!==b.dataset.cat);
     });
   });
 }
