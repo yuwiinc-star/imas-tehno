@@ -181,20 +181,30 @@
   .cb .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
   .cb .acts .btn{padding:11px 16px;font-size:14px}
   /* ============ catalog list (rows) ============ */
-  .clist{max-width:1180px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-  .crow{display:grid;grid-template-columns:140px minmax(0,1.5fr) minmax(0,1.15fr) auto;gap:16px 28px;align-items:center;padding:22px 26px;border-top:1px solid var(--rule);transition:background .15s}
+  .ptitle.narrow{grid-template-columns:1fr;max-width:1100px;gap:14px}
+  .ptitle.narrow .lead{justify-self:start;max-width:64ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;max-width:1100px;margin:0 auto 18px}
+  .chip{padding:9px 16px;border-radius:999px;border:1px solid var(--rule-l);background:var(--card);color:var(--txt);font-family:var(--body);font-size:14px;font-weight:500;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+  .chip:hover{border-color:var(--rule-h)}
+  .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .clist{max-width:1100px;margin:0 auto;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+  .crow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 32px;align-items:center;padding:26px 30px;border-top:1px solid var(--rule);text-decoration:none;color:inherit;transition:background .15s}
   .crow:first-child{border-top:0}
   .crow:hover{background:var(--bg)}
-  .crow .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);line-height:1.4}
-  .crow h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.02rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 6px}
-  .crow .nm p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.4}
-  .crow .sp{display:grid;gap:5px}
-  .crow .sp div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13px;padding-bottom:4px;border-bottom:1px dashed var(--rule)}
+  .crow[hidden]{display:none}
+  .crow .cat{display:inline-block;font-size:12.5px;font-weight:600;color:var(--red);margin-bottom:8px}
+  .crow h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.2rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 8px}
+  .crow .nm p{margin:0;font-size:15px;color:var(--txt-2);line-height:1.5;max-width:66ch}
+  .crow .sp{display:flex;flex-wrap:wrap;gap:6px 0;margin-top:14px;font-size:14px;line-height:1.5}
+  .crow .sp div{display:inline}
+  .crow .sp div+div::before{content:"·";margin:0 10px;color:var(--muted-l)}
   .crow .sp span{color:var(--muted)}
-  .crow .sp b{font-family:var(--mono);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
-  .crow .ac{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-  .crow .ac .btn{padding:10px 14px;font-size:13.5px;white-space:nowrap}
-  @media(max-width:1000px){.crow{grid-template-columns:1fr;gap:12px;padding:20px}.crow .ac{justify-content:flex-start}.crow .sp b{text-align:left}}
+  .crow .sp span::after{content:": "}
+  .crow .sp b{font-weight:600;color:var(--txt)}
+  .crow .go{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-weight:600;font-size:15px;color:var(--red)}
+  .crow .go::after{content:"→";transition:transform .2s}
+  .crow:hover .go::after{transform:translateX(4px)}
+  @media(max-width:760px){.crow{grid-template-columns:1fr;gap:14px;padding:20px}}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
@@ -466,8 +476,8 @@
 
 <!-- ================= КАТАЛОГ ================= -->
 <main id="katalog" hidden>
-  <div class="w ptitle"><div><div class="mono">Что производим</div><h1>Оборудование</h1></div><p class="lead">Проектируем и собираем в Воронеже, ставим по всей России. Цена по запросу под вашу конфигурацию.</p></div>
-  <section class="sec" style="padding-top:32px"><div class="w"><div class="clist" data-rows></div></div></section>
+  <div class="w ptitle narrow"><div><div class="mono">Что производим</div><h1>Оборудование</h1></div><p class="lead">Проектируем и собираем в Воронеже, ставим по всей России. Цена по запросу под вашу конфигурацию.</p></div>
+  <section class="sec" style="padding-top:28px"><div class="w"><div class="chips" data-chips="rows"></div><div class="clist" data-rows></div></div></section>
   <section class="sec white" hidden><div class="w">
     <div class="head"><div><div class="mono">Под ключ</div><h2>Линия целиком, а не машина отдельно</h2></div><a class="lnk" href="#/kontakty"><span>Обсудить проект</span><span>→</span></a></div>
     <div class="split">
@@ -550,8 +560,8 @@
 
 <!-- ================= УСЛУГИ ================= -->
 <main id="uslugi" hidden>
-  <div class="w ptitle"><div><div class="mono">Что делаем</div><h1>Услуги</h1></div><p class="lead">Полный цикл подготовки семян на нашей площадке — от приёмки зерна до упаковки, плюс монтаж и сервис оборудования по всей России.</p></div>
-  <section class="sec" style="padding-top:32px"><div class="w"><div class="clist" data-srows></div></div></section>
+  <div class="w ptitle narrow"><div><div class="mono">Что делаем</div><h1>Услуги</h1></div><p class="lead">Полный цикл подготовки семян на нашей площадке — от приёмки зерна до упаковки, плюс монтаж и сервис оборудования по всей России.</p></div>
+  <section class="sec" style="padding-top:28px"><div class="w"><div class="chips" data-chips="srows"></div><div class="clist" data-srows></div></div></section>
   <section class="sec" hidden><div class="w">
     <div class="cells">
       <div><div class="n">01</div><h3>Приёмка</h3><p>Приём зерна через завальную яму.</p></div>
@@ -685,15 +695,26 @@ function card(p,full){
 document.querySelectorAll('[data-cards]').forEach(g=>P.forEach(p=>g.appendChild(card(p, g.classList.contains('grid')))));
 /* ---------- catalog rows: equipment and services in one format ---------- */
 function row(p){
-  const d=document.createElement('div'); d.className='crow';
+  const a=document.createElement('a'); a.className='crow'; a.dataset.cat=p.cat;
+  a.href=p.link?'#/'+p.id:'#/kontakty';
   const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
-  const acts=p.link
-    ?`<a class="btn primary" href="#/${p.id}">Подробнее <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену</a>`
-    :`<a class="btn primary" href="#/kontakty">${p.cta||'Запросить цену'} <span class="plus">→</span></a><a class="btn ghost" href="tel:+79518675358">Позвонить</a>`;
-  d.innerHTML=`<div class="cat">${p.cat}</div><div class="nm"><h3>${p.name}</h3><p>${p.desc}</p></div><div class="sp">${specs}</div><div class="ac">${acts}</div>`;
-  return d;
+  a.innerHTML=`<div class="nm"><span class="cat">${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="sp">${specs}</div></div><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span>`;
+  return a;
 }
-document.querySelectorAll('[data-rows]').forEach(g=>P.forEach(p=>g.appendChild(row(p))));
+function renderList(key,items){
+  document.querySelectorAll(`[data-${key}]`).forEach(g=>items.forEach(p=>g.appendChild(row(p))));
+  document.querySelectorAll(`[data-chips="${key}"]`).forEach(c=>{
+    const cats=['Все',...new Set(items.map(p=>p.cat))];
+    c.innerHTML=cats.map((n,i)=>`<button class="chip" aria-pressed="${i===0}" data-cat="${n}">${n}</button>`).join('');
+    c.addEventListener('click',e=>{
+      const b=e.target.closest('.chip'); if(!b) return;
+      c.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===b));
+      const list=c.parentElement.querySelector(`[data-${key}]`);
+      list.querySelectorAll('.crow').forEach(r=>r.hidden=b.dataset.cat!=='Все'&&r.dataset.cat!==b.dataset.cat);
+    });
+  });
+}
+renderList('rows',P);
 const S=[
  {cat:'Подработка', name:'Очистка и калибровка семян', desc:'Удаление примесей, разделение по размеру и удельному весу, фотосепарация по цвету и дефектам.',
   specs:[['Операции','очистка · калибровка · сепарация'],['Приёмка','через завальную яму'],['Результат','кондиционные семена']], cta:'Рассчитать партию'},
@@ -708,7 +729,7 @@ const S=[
  {cat:'Сервис', name:'Сервис и запчасти', desc:'Гарантия на оборудование, выезд инженера, изнашиваемые детали и футеровка в наличии.',
   specs:[['Гарантия','на всё оборудование'],['Запчасти','в наличии, российские'],['Выезд инженера','по заявке']], cta:'Оставить заявку'},
 ];
-document.querySelectorAll('[data-srows]').forEach(g=>S.forEach(p=>g.appendChild(row(p))));
+renderList('srows',S);
 const SV=[
  {cat:'Услуга', name:'Подготовка семян полного цикла', v:'8', u:'этапов'},
  {cat:'Услуга', name:'Протравливание, инкрустация, дражирование', v:'до 4', u:'компонентов'},
