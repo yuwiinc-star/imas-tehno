@@ -193,25 +193,24 @@
   .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
   .chip small{font-family:var(--mono);font-size:12px;color:var(--muted-l)}
   .chip[aria-pressed="true"] small{color:rgba(255,255,255,.6)}
-  .catgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-  .pcard{display:flex;flex-direction:column;gap:18px;padding:28px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s}
-  .pcard:hover{border-color:var(--rule-h);transform:translateY(-2px);box-shadow:0 14px 34px rgba(23,23,22,.08)}
+  .catgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-content:start}
+  .pcard{display:flex;flex-direction:column;gap:12px;padding:18px 20px 16px;background:var(--card);border:1px solid var(--rule);border-radius:14px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .pcard:hover{border-color:var(--rule-h);transform:translateY(-2px);box-shadow:0 10px 24px rgba(23,23,22,.07)}
   .pcard[hidden]{display:none}
-  .pcard .cat{font-size:12.5px;font-weight:600;color:var(--red)}
-  .pcard h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.3rem;line-height:1.15;letter-spacing:-.01em;margin:6px 0 10px}
-  .pcard .hd p{margin:0;font-size:15px;color:var(--txt-2);line-height:1.5}
-  .pcard .st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .pcard .st div{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;min-width:0}
-  .pcard .st span{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;line-height:1.3}
-  .pcard .st b{display:block;font-size:15px;font-weight:600;line-height:1.3;color:var(--txt)}
-  .pcard .ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--rule)}
-  .pcard .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--red);white-space:nowrap}
+  .pcard .cat{font-size:11.5px;font-weight:600;color:var(--red)}
+  .pcard .hd{min-height:66px}
+  .pcard h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.02rem;line-height:1.2;letter-spacing:-.01em;margin:4px 0 0}
+  .pcard .st{display:grid;gap:0;border-top:1px solid var(--rule)}
+  .pcard .st div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule);font-size:13px;line-height:1.35}
+  .pcard .st span{color:var(--muted)}
+  .pcard .st b{font-weight:600;color:var(--txt);text-align:right}
+  .pcard .ft{display:flex;margin-top:auto;padding-top:4px}
+  .pcard .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--red);white-space:nowrap}
   .pcard .go::after{content:"→";transition:transform .2s}
   .pcard:hover .go::after{transform:translateX(4px)}
-  .pcard .ft small{font-size:13.5px;color:var(--muted)}
+  @media(max-width:1300px){.catgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:1100px){.catwrap{grid-template-columns:1fr;gap:20px}.catnav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}.catnav .lbl{display:none}.chip{background:var(--card)}}
-  @media(max-width:760px){.catgrid{grid-template-columns:1fr}.pcard{padding:22px}}
-  @media(max-width:480px){.pcard .st{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.catgrid{grid-template-columns:1fr}}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
@@ -243,26 +242,40 @@
   @media(max-width:900px){.cells{grid-template-columns:repeat(2,minmax(0,1fr))}.cells.three{grid-template-columns:1fr}}
   @media(max-width:520px){.cells,.cells.two{grid-template-columns:1fr}}
 
-  /* ============ flagship feature block ============ */
-  .feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1240px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-  .feat .pic{position:relative;aspect-ratio:3/2;background:var(--sand-2)}
-  .feat .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
-  .feat .pic .tag{position:absolute;left:18px;bottom:18px;padding:8px 12px;border-radius:10px;background:rgba(15,16,16,.72);color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}
-  .feat .txt{padding:clamp(26px,3vw,44px);display:flex;flex-direction:column;gap:22px;justify-content:center}
-  .feat .kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .feat .kf div{border:1px solid var(--rule);border-left:3px solid var(--red);border-radius:12px;padding:12px 16px 13px;background:var(--bg)}
-  .feat .kf span{display:block;font-size:12.5px;color:var(--txt-2);line-height:1.3;margin-bottom:6px}
-  .feat .txt,.feat .pic{min-width:0}
-  .feat .kf b{display:block;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1;color:var(--txt)}
-  .feat .kf b small{font-family:var(--body);font-weight:500;font-size:.55em;color:var(--muted);letter-spacing:0}
-  .feat ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .feat li{position:relative;padding-left:26px;font-size:15px;line-height:1.5;color:var(--txt-2)}
-  .feat li b{color:var(--txt);font-weight:600}
-  .feat li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--red);border-bottom:2.5px solid var(--red);transform:rotate(-45deg)}
-  .feat .acts{display:flex;flex-wrap:wrap;gap:10px}
-  .feat .note{margin:0;font-size:13.5px;color:var(--muted)}
-  @media(max-width:1000px){.feat{grid-template-columns:1fr}}
-  @media(max-width:520px){.feat .kf{grid-template-columns:1fr 1fr}.feat .kf b{font-size:1.25rem}}
+  /* ============ home blocks: flagship + production ============ */
+  .blk{max-width:1240px;margin:0 auto}
+  .bhead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:22px}
+  .bhead h2{margin-top:6px}
+  .feat,.prod{display:grid;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+  .feat{grid-template-columns:400px minmax(0,1fr)}
+  .prod{grid-template-columns:minmax(0,1fr) 360px}
+  .feat .pic,.prod .pic{position:relative;min-width:0;min-height:300px;background:var(--sand-2)}
+  .feat .pic img,.prod .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .feat .txt,.prod .txt{min-width:0;padding:30px 34px;display:flex;flex-direction:column;gap:20px;justify-content:center}
+  .feat .txt .lead{max-width:60ch;margin:0;font-size:15.5px}
+  .prod .txt h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.15rem;line-height:1.2;margin:0}
+  .prod .txt p{margin:0;color:var(--txt-2);font-size:15px;line-height:1.55;max-width:62ch}
+  .tiles{display:grid;gap:10px}
+  .tiles.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tiles div{background:var(--bg);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;min-width:0}
+  .sec.white .tiles div{background:var(--card-2);border-color:transparent}
+  .tiles span{display:block;font-size:12px;color:var(--muted);line-height:1.3;margin-bottom:6px}
+  .tiles b{display:block;font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-.02em;line-height:1.1;color:var(--txt);font-variant-numeric:tabular-nums}
+  .tiles b small{font-family:var(--body);font-weight:500;font-size:.6em;color:var(--muted)}
+  .checks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .checks li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:var(--txt-2)}
+  .checks li b{color:var(--txt);font-weight:600}
+  .checks li::before{content:"";position:absolute;left:1px;top:.5em;width:12px;height:7px;border-left:2.5px solid var(--red);border-bottom:2.5px solid var(--red);transform:rotate(-45deg)}
+  .feat .acts{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .feat .note{margin:-8px 0 0;font-size:13px;color:var(--muted)}
+  .qcard{margin:16px 0 0;padding:22px 28px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--red);border-radius:var(--r);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 40px;align-items:center}
+  .qcard blockquote{margin:0;font-size:15.5px;line-height:1.55;color:var(--txt);max-width:78ch}
+  .qcard blockquote::before{content:"«"}.qcard blockquote::after{content:"»"}
+  .qcard figcaption{display:flex;flex-direction:column;gap:2px;white-space:nowrap}
+  .qcard figcaption b{font-weight:600;font-size:14px}
+  .qcard figcaption span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:1000px){.feat,.prod{grid-template-columns:1fr}.feat .pic,.prod .pic{min-height:0;aspect-ratio:16/10}.prod .pic{order:-1}.tiles.four{grid-template-columns:repeat(2,minmax(0,1fr))}.qcard{grid-template-columns:1fr}.qcard figcaption{white-space:normal}}
+  @media(max-width:600px){.feat .txt,.prod .txt{padding:22px}.bhead{flex-direction:column;align-items:flex-start;gap:8px}}
 
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
@@ -445,38 +458,50 @@
   </div></section>
 
   <!-- 3: флагман Айвери 700 -->
-  <section class="sec white"><div class="w">
-    <div class="head"><div><div class="mono">Флагман</div><h2>Протравитель семян Айвери 700</h2></div><p class="lead">Порционная машина для протравливания, инкрустации и дражирования. Точное дозирование по убыли веса, бережная обработка, подсушка семян после нанесения.</p></div>
+  <section class="sec white"><div class="w"><div class="blk">
+    <div class="bhead"><div><div class="mono">Флагман</div><h2>Протравитель семян Айвери 700</h2></div><a class="lnk" href="#/ayveri"><span>Все модели</span><span>→</span></a></div>
     <div class="feat">
-      <div class="pic"><img src="{{IMG:айвери-и-емкости}}" alt="Протравитель семян Айвери 700 с дозирующими ёмкостями"><span class="tag">Собственное производство · Воронеж</span></div>
+      <div class="pic"><img src="{{IMG:линия-общий-вид-2}}" alt="Протравитель семян Айвери 700 в линии с дозирующими ёмкостями"></div>
       <div class="txt">
-        <div class="kf">
-          <div><span>Производительность</span><b><small>до</small> 6,5 <small>т/ч</small></b></div>
+        <p class="lead">Порционная машина для протравливания, инкрустации и дражирования. Дозирование по убыли веса, бережная обработка, подсушка семян после нанесения.</p>
+        <div class="tiles four">
+          <div><span>Производительность</span><b>до 6,5 <small>т/ч</small></b></div>
           <div><span>Объём партии</span><b>55 <small>л</small></b></div>
-          <div><span>Дозаторы</span><b>4 <small>жидких</small> + 2 <small>сухих</small></b></div>
-          <div><span>Энергопотребление</span><b>6,2 <small>кВт</small></b></div>
+          <div><span>Дозаторы</span><b>4 + 2 <small>жидк. / сух.</small></b></div>
+          <div><span>Мощность</span><b>6,2 <small>кВт</small></b></div>
         </div>
-        <ul>
-          <li><b>Ротор и статор PE‑1000</b> — износостойкое покрытие, долгий срок службы</li>
-          <li><b>Рецепт под каждую партию</b> — контроллер хранит настройки, оператор меняет их на ходу</li>
-          <li><b>До 4 препаратов за цикл</b> — одновременно или поочерёдно, с подсушкой между нанесениями</li>
-          <li><b>3,5 л/т раствора</b> вместо 4,5 л/т у аналогов — меньше химии на тонну семян</li>
+        <ul class="checks">
+          <li><b>Ротор и статор PE‑1000</b> — износостойкое покрытие узлов</li>
+          <li><b>До 4 препаратов за цикл</b> — с подсушкой между нанесениями</li>
+          <li><b>Рецепт под партию</b> — контроллер хранит настройки, оператор меняет их на ходу</li>
         </ul>
-        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену</a></div>
-        <p class="note">Есть старшая модель R‑900 — до 10 т/ч, партия 80 л.</p>
+        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="lnk" href="#/kontakty"><span>Запросить цену</span><span>→</span></a></div>
+        <p class="note">Старшая модель R‑900 — до 10 т/ч, партия 80 л.</p>
       </div>
     </div>
-  </div></section>
+  </div></div></section>
 
   <!-- 4 -->
-  <section class="sec"><div class="w">
-    <div class="head"><div><div class="mono">Производство</div><h2>Собственное производство в Воронеже</h2></div><a class="lnk" href="#/o-kompanii"><span>О компании</span><span>→</span></a></div>
-    <div class="split">
-      <div class="txt"><h3>Металлоконструкции и сборка на одной площадке</h3><p>Компания ИМАС-Техно с 2020 года работает на рынке сельскохозяйственного оборудования. Мы стремимся создавать надёжные, удобные, долговечные механизмы с удобным управлением и помогаем адаптировать оборудование под задачи, которые вам требуется решить.</p><p>Наша цель — производство качественной и удобной в эксплуатации техники, доступной по цене, из российских комплектующих.</p><p class="motto">Посейте семена успеха с помощью наших технологий!</p>
-        <div class="figs"><div><span>На рынке</span><b>с 2020</b></div><div><span>Запас прочности</span><b>3–5<i>×</i></b></div><div><span>Комплектующие</span><b>РФ</b></div><div><span>Монтаж</span><b>вся РФ</b></div></div></div>
+  <section class="sec"><div class="w"><div class="blk">
+    <div class="bhead"><div><div class="mono">Производство</div><h2>Собственное производство в Воронеже</h2></div><a class="lnk" href="#/o-kompanii"><span>О компании</span><span>→</span></a></div>
+    <div class="prod">
+      <div class="txt">
+        <h3>Металлоконструкции и сборка на одной площадке</h3>
+        <p>С 2020 года проектируем и собираем оборудование для подготовки семян из российских комплектующих. Металлоконструкции, сборка и стендовая проверка — в одном цеху, поэтому отвечаем за результат целиком.</p>
+        <div class="tiles four">
+          <div><span>На рынке</span><b>с 2020</b></div>
+          <div><span>Запас прочности</span><b>3–5<small>×</small></b></div>
+          <div><span>Комплектующие</span><b>РФ</b></div>
+          <div><span>Монтаж</span><b>вся РФ</b></div>
+        </div>
+      </div>
+      <div class="pic"><img src="{{IMG:шкаф-управления-hmi}}" alt="Шкаф управления с сенсорной панелью на линии протравливания ИМАС-Техно"></div>
     </div>
-    <div class="quote"><div class="mono">Отзыв клиента</div><div><blockquote>Второй год работаем на оборудовании ИМАС-Техно: протравитель Айвери 700 и транспортёры. Эффективность машины на высоком уровне. Благодарим за подробные консультации при выборе, быструю доставку и профессиональную настройку.</blockquote><div class="who mono">ООО «Агрокомплекс-Воронеж»</div></div></div>
-  </div></section>
+    <figure class="qcard">
+      <blockquote>Второй год работаем на оборудовании ИМАС-Техно: протравитель Айвери 700 и транспортёры. Эффективность машины на высоком уровне. Благодарим за подробные консультации при выборе, быструю доставку и профессиональную настройку.</blockquote>
+      <figcaption><b>ООО «Агрокомплекс-Воронеж»</b><span>Отзыв клиента</span></figcaption>
+    </figure>
+  </div></div></section>
 
   <!-- 6 -->
   <div data-cta></div>
@@ -706,8 +731,8 @@ function row(p){
   const a=document.createElement('a'); a.className='pcard'; a.dataset.cat=p.cat;
   a.href=p.link?'#/'+p.id:'#/kontakty';
   const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
-  a.innerHTML=`<div class="hd"><span class="cat">${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p></div><div class="st">${specs}</div>
-  <div class="ft"><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span><small>${p.link?'Цена по запросу':'Расчёт под задачу'}</small></div>`;
+  a.innerHTML=`<div class="hd"><span class="cat">${p.cat}</span><h3>${p.name}</h3></div><div class="st">${specs}</div>
+  <div class="ft"><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span></div>`;
   return a;
 }
 function renderList(key,items){
