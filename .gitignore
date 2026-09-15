@@ -4,3 +4,7 @@
 материалы/видео/оригинал-*.mp4
 .DS_Store
 .claude/
+
+index.html
+__pycache__/
+*.pyc
