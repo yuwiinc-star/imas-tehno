@@ -7,7 +7,7 @@
     --txt:#171716;--txt-2:#3A3A38;--muted:#6E6D68;--muted-l:#8A8A85;--rule:rgba(23,23,22,.09);--rule-l:rgba(23,23,22,.15);--rule-h:rgba(23,23,22,.35);--field:#FFFFFF;--chip:#171716;--chip-txt:#FFFFFF;
     --dk-bg:#0F1010;--dk-card:#1A1B1A;
     --display:'Unbounded',Arial,sans-serif;--body:'Golos Text',Arial,sans-serif;--mono:'JetBrains Mono',Menlo,monospace;
-    --w:min(1700px, calc(100% - 2*clamp(20px,5vw,120px)));--gap:16px;--sec:clamp(64px,5.5vw,96px);--navh:84px}
+    --w:min(1700px, calc(100% - 2*clamp(20px,5vw,120px)));--gap:16px;--sec:clamp(64px,5.5vw,96px);--navh:76px}
   .hero,footer,.dark,.dk,.menu,.cta .box{--bg:#0F1010;--bg-2:#161717;--sand-2:#1E1F1E;--card-2:#1E1F1E;--card:#1A1B1A;--txt:#F2F2F0;--txt-2:#C9C9C5;--muted:#9C9C98;--muted-l:#7C7C78;--rule:rgba(255,255,255,.09);--rule-l:rgba(255,255,255,.14);--rule-h:rgba(255,255,255,.35);--field:#111212;--chip:#FFFFFF;--chip-txt:#0F1010;color:var(--txt)}
   *{box-sizing:border-box}
   [hidden]{display:none!important}
@@ -38,12 +38,12 @@
   .nav ul{display:flex;gap:clamp(20px,1.8vw,34px);list-style:none;margin:0;padding:0}
   .nav ul a{color:#fff;opacity:.85;font-weight:500;padding:6px 0;border-bottom:2px solid transparent;text-transform:none;letter-spacing:0;font-size:15px}.nav ul a:hover{opacity:1}.nav ul a.on{opacity:1;border-color:var(--red)}
   .nav .rgt{display:flex;align-items:center;gap:8px}
-  .nav .tel{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 24px;color:#fff;background:#E23D31;border:1px solid #E23D31;border-radius:14px;font-family:var(--body);font-size:18px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums;box-shadow:0 8px 24px rgba(226,61,49,.35);transition:background .2s,transform .2s}
-  .nav .tel svg{width:24px;height:24px;flex:none}
-  .nav .tel:hover{background:#F04A3E;transform:translateY(-1px)}
-  .nav .soc{width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);background:rgba(20,21,20,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:14px;color:#fff;transition:background .2s,border-color .2s}
+  .nav .tel{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;color:#fff;background:rgba(20,21,20,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.35);border-radius:12px;font-family:var(--body);font-size:15.5px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums;transition:background .2s,border-color .2s}
+  .nav .tel svg{width:20px;height:20px;flex:none}
+  .nav .tel:hover{background:rgba(255,255,255,.16);border-color:#fff}
+  .nav .soc{width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);background:rgba(20,21,20,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:12px;color:#fff;transition:background .2s,border-color .2s}
   .nav .soc:hover{background:rgba(255,255,255,.16);border-color:#fff}
-  .nav .soc svg{width:28px;height:28px}
+  .nav .soc svg{width:24px;height:24px}
   .nav .catbtn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0F1010;border-radius:10px;padding:9px 14px;font-size:14px;font-weight:600;text-transform:none;letter-spacing:0}
   .nav .in{width:var(--w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
   .nav .lft{display:flex;align-items:center;gap:20px}
@@ -170,6 +170,16 @@
   .cb .kv b small{font-size:.55em;color:var(--muted);margin-left:5px}
   .cb .kv span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
   .cb .kv span.dim{color:var(--muted-l)}
+  /* text-only catalog card */
+  .cb.full{padding:28px 26px 26px;gap:20px;min-height:0}
+  .cb.full h3{font-size:1.25rem}
+  .cb .desc{margin:0;font-size:14.5px;line-height:1.45;color:var(--muted)}
+  .cb .specs{display:grid;gap:9px}
+  .cb .specs div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:13.5px;padding-bottom:8px;border-bottom:1px dashed var(--rule)}
+  .cb .specs span{color:var(--muted)}
+  .cb .specs b{font-family:var(--mono);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+  .cb .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
+  .cb .acts .btn{padding:11px 16px;font-size:14px}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
@@ -597,14 +607,29 @@ const $=id=>document.getElementById(id);
 
 /* ---------- products: the one card ---------- */
 const P=[
- {id:'ayveri', link:true, cat:'Протравливание', name:'Протравитель семян Айвери', img:'cut-ayveri', v:'6,5', u:'т/ч'},
- {id:'zet', cat:'Транспортировка', name:'Транспортёр с качающимися ковшами', img:null, v:'20', u:'м³/ч'},
- {id:'mera', cat:'Фасовка', name:'Дозаторы для сыпучих продуктов МЕРА', img:'cut-mera', v:'1000', u:'кг'},
+ {id:'ayveri', link:true, cat:'Протравливание', name:'Протравитель семян Айвери', img:'cut-ayveri', v:'6,5', u:'т/ч',
+  desc:'Порционная протравочная машина: протравливание, инкрустация, дражирование и подсушка семян.',
+  specs:[['Производительность','до 6,5 т/ч'],['Модели','R-700 · R-900'],['Дозаторы','4 жидких + 2 сухих']]},
+ {id:'zet', cat:'Транспортировка', name:'Транспортёр с качающимися ковшами', img:null, v:'20', u:'м³/ч',
+  desc:'Z-образный транспортёр с качающимися ковшами — бережная подача семян без травмирования.',
+  specs:[['Производительность','до 20 м³/ч'],['Трасса','Г- или Z-образная, по заказу'],['Ковши','250 / 420 мм']]},
+ {id:'mera', cat:'Фасовка', name:'Дозаторы для сыпучих продуктов МЕРА', img:'cut-mera', v:'1000', u:'кг',
+  desc:'Весовой дозатор для фасовки семян и сыпучих продуктов в мешки и биг-бэги.',
+  specs:[['Порция','до 1000 кг'],['Режимы','автоматический / ручной'],['Тара','мешки, биг-бэги']]},
 ];
-function card(p,withImg){
+function card(p,full){
+  if(full){
+    const d=document.createElement('div'); d.className='card';
+    const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
+    const acts=p.link
+      ?`<a class="btn primary" href="#/${p.id}">Подробнее <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену</a>`
+      :`<a class="btn primary" href="#/kontakty">Запросить цену <span class="plus">→</span></a><a class="btn ghost" href="tel:+79518675358">Позвонить</a>`;
+    d.innerHTML=`<div class="cb full"><div><div class="cat">${p.cat}</div><h3>${p.name}</h3><p class="desc">${p.desc}</p></div>
+    <div class="specs">${specs}</div><div class="acts">${acts}</div></div>`;
+    return d;
+  }
   const a=document.createElement(p.link?'a':'div'); a.className='card'; if(p.link) a.href='#/'+p.id;
-  const media=withImg?(p.img?`<div class="ph cut"><img src="${IMG[p.img]}" alt="${p.name}" loading="lazy"></div>`:`<div class="ph cut">${ZSVG}</div>`):'';
-  a.innerHTML=`${media}<div class="cb"><div><div class="cat">${p.cat}</div><h3>${p.name}</h3></div>
+  a.innerHTML=`<div class="cb"><div><div class="cat">${p.cat}</div><h3>${p.name}</h3></div>
   <div class="kv"><b>${p.v}<small>${p.u}</small></b>${p.link?'<span>Подробнее →</span>':'<span class="dim">Цена по запросу</span>'}</div></div>`;
   return a;
 }
