@@ -124,9 +124,9 @@
   @media(max-width:520px){.hero .qgroup{grid-template-columns:1fr}.hero .quick a{min-height:0}}
   .hero .in{position:relative;align-self:center;padding:calc(var(--navh) + 40px) 0 clamp(36px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 48px;align-items:end}
   .hero .nums{display:flex;gap:clamp(18px,2.5vw,40px);flex-wrap:wrap;margin-bottom:28px}
-  .hero .nums div{padding-left:14px;border-left:2px solid var(--red)}
-  .hero .nums b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1rem,1.2vw,1.35rem);line-height:1;color:#fff}
-  .hero .nums span{display:block;font-size:.85em;color:#D7D7D2;margin-top:8px}
+  .hero .nums div{padding-left:14px;border-left:2px solid rgba(226,61,49,.6)}
+  .hero .nums b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(1rem,1.2vw,1.35rem);line-height:1;color:rgba(255,255,255,.72)}
+  .hero .nums span{display:block;font-size:.85em;color:rgba(215,215,210,.6);margin-top:8px}
   .hero h1{max-width:18ch;margin-top:0;font-size:clamp(1.8rem,2.8vw,3.3rem)}
   .hero .lead{color:#E6E6E2;max-width:64ch;font-size:clamp(.9rem,.85vw,1rem);margin-top:18px}
   .hero .acts{margin-top:32px}
@@ -150,7 +150,7 @@
   @media(max-width:820px){.ptitle{grid-template-columns:1fr;gap:12px}.ptitle .lead{justify-self:start}}
 
   /* ============ product card ============ */
-  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);max-width:1240px}
   .card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);display:flex;flex-direction:column;min-width:0;color:var(--txt);transition:border-color .2s,transform .2s;overflow:hidden}
   a.card{cursor:pointer}a.card:hover{border-color:var(--rule-h);transform:translateY(-2px)}
   .ph.cut{aspect-ratio:4/3;background:var(--card-2);display:grid;place-items:center;padding:6%}
@@ -171,8 +171,8 @@
   .cb .kv span{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
   .cb .kv span.dim{color:var(--muted-l)}
   /* text-only catalog card */
-  .cb.full{padding:28px 26px 26px;gap:20px;min-height:0}
-  .cb.full h3{font-size:1.25rem}
+  .cb.full{padding:24px 22px 22px;gap:18px;min-height:0}
+  .cb.full h3{font-size:1.15rem}
   .cb .desc{margin:0;font-size:14.5px;line-height:1.45;color:var(--muted)}
   .cb .specs{display:grid;gap:9px}
   .cb .specs div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:13.5px;padding-bottom:8px;border-bottom:1px dashed var(--rule)}
@@ -180,6 +180,21 @@
   .cb .specs b{font-family:var(--mono);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
   .cb .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:4px}
   .cb .acts .btn{padding:11px 16px;font-size:14px}
+  /* ============ catalog list (rows) ============ */
+  .clist{max-width:1180px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+  .crow{display:grid;grid-template-columns:140px minmax(0,1.5fr) minmax(0,1.15fr) auto;gap:16px 28px;align-items:center;padding:22px 26px;border-top:1px solid var(--rule);transition:background .15s}
+  .crow:first-child{border-top:0}
+  .crow:hover{background:var(--bg)}
+  .crow .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);line-height:1.4}
+  .crow h3{font-family:var(--display);font-weight:700;text-transform:none;font-size:1.02rem;line-height:1.2;letter-spacing:-.01em;margin:0 0 6px}
+  .crow .nm p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.4}
+  .crow .sp{display:grid;gap:5px}
+  .crow .sp div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13px;padding-bottom:4px;border-bottom:1px dashed var(--rule)}
+  .crow .sp span{color:var(--muted)}
+  .crow .sp b{font-family:var(--mono);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+  .crow .ac{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .crow .ac .btn{padding:10px 14px;font-size:13.5px;white-space:nowrap}
+  @media(max-width:1000px){.crow{grid-template-columns:1fr;gap:12px;padding:20px}.crow .ac{justify-content:flex-start}.crow .sp b{text-align:left}}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}}
 
@@ -210,6 +225,24 @@
   .dark .cells p{color:#B9B4A8}
   @media(max-width:900px){.cells{grid-template-columns:repeat(2,minmax(0,1fr))}.cells.three{grid-template-columns:1fr}}
   @media(max-width:520px){.cells,.cells.two{grid-template-columns:1fr}}
+
+  /* ============ flagship feature block ============ */
+  .feat{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);background:var(--card);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+  .feat .pic{position:relative;min-height:460px;background:var(--sand-2)}
+  .feat .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .feat .pic .tag{position:absolute;left:18px;bottom:18px;padding:8px 12px;border-radius:10px;background:rgba(15,16,16,.72);color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;backdrop-filter:blur(8px)}
+  .feat .txt{padding:clamp(26px,3.2vw,48px);display:flex;flex-direction:column;gap:24px;justify-content:center}
+  .feat .kf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .feat .kf div{border:1px solid var(--rule);border-radius:12px;padding:14px 16px 12px;background:var(--bg)}
+  .feat .kf b{display:block;font-family:var(--mono);font-weight:500;font-size:1.45rem;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.1}
+  .feat .kf span{display:block;margin-top:4px;font-size:12.5px;color:var(--muted);line-height:1.3}
+  .feat ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .feat li{position:relative;padding-left:18px;font-size:15px;line-height:1.45}
+  .feat li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--red);transform:rotate(45deg)}
+  .feat .acts{display:flex;flex-wrap:wrap;gap:10px}
+  .feat .note{margin:0;font-size:13.5px;color:var(--muted)}
+  @media(max-width:1000px){.feat{grid-template-columns:1fr}.feat .pic{min-height:0;aspect-ratio:3/2}}
+  @media(max-width:520px){.feat .kf{grid-template-columns:1fr 1fr}.feat .kf b{font-size:1.2rem}}
 
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
@@ -357,7 +390,7 @@
     <div class="media"><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="{{VIDEO}}" type="video/mp4"></video></div>
     <div class="veil"></div>
     <div class="w in">
-      <div><div class="nums"><div><b>с 2020</b><span>производим и обслуживаем</span></div><div><b>3 линейки</b><span>протравливание, транспорт, фасовка</span></div><div><b>вся Россия</b><span>монтаж и пусконаладка</span></div></div>
+      <div><div class="nums"><div><b>с 2020</b><span>производим и обслуживаем</span></div><div><b>Воронеж</b><span>собственное производство</span></div><div><b>полный цикл</b><span>подготовки семян</span></div></div>
         <h1>Оборудование для подготовки семян</h1>
         <p class="lead" style="margin-top:16px">От передовых систем обработки семян до эффективных решений для погрузки и разгрузки материалов, компания ИМАС-Техно поставляет современное оборудование и технологии автоматизации, которые помогают сельскохозяйственным предприятиям процветать в постоянно развивающейся отрасли. Собственное производство в Воронеже.</p>
         <div class="acts"><a class="btn primary" href="#/katalog">Оборудование <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Рассчитать проект <span class="plus">+</span></a></div></div>
@@ -391,14 +424,27 @@
     </div>
   </div></section>
 
-  <!-- 3 -->
+  <!-- 3: флагман Айвери 700 -->
   <section class="sec white"><div class="w">
-    <div class="head"><div><div class="mono">Клиенты выбирают</div><h2>Линия «под ключ»</h2></div><p class="lead">Расчёт, производство, монтаж и сервис объединены в один процесс. Вы получаете работающий участок, а не набор машин.</p></div>
-    <div class="cells">
-      <div><div class="n">01</div><h3>Расчёт</h3><p>Культура, объём в сезон, препараты. Подбираем типоразмер и состав линии.</p></div>
-      <div><div class="n">02</div><h3>Производство</h3><p>Собираем из российских комплектующих, проверяем на стенде.</p></div>
-      <div><div class="n">03</div><h3>Монтаж и запуск</h3><p>Выезжаем на объект, ставим, обвязываем, обучаем оператора.</p></div>
-      <div><div class="n">04</div><h3>Сервис</h3><p>Гарантия, запчасти в наличии, выезд инженера.</p></div>
+    <div class="head"><div><div class="mono">Флагман</div><h2>Протравитель семян Айвери 700</h2></div><p class="lead">Порционная машина для протравливания, инкрустации и дражирования. Точное дозирование по убыли веса, бережная обработка, подсушка семян после нанесения.</p></div>
+    <div class="feat">
+      <div class="pic"><img src="{{IMG:айвери-и-емкости}}" alt="Протравитель семян Айвери 700 с дозирующими ёмкостями"><span class="tag">Собственное производство · Воронеж</span></div>
+      <div class="txt">
+        <div class="kf">
+          <div><b>до 6,5</b><span>т/ч производительность</span></div>
+          <div><b>55 л</b><span>объём партии</span></div>
+          <div><b>4 + 2</b><span>дозатора: жидкие + сухие</span></div>
+          <div><b>6,2 кВт</b><span>энергопотребление</span></div>
+        </div>
+        <ul>
+          <li>Ротор и статор с покрытием PE‑1000 — долговечность узлов</li>
+          <li>Контроллер с настройкой рецепта под каждую партию</li>
+          <li>До 4 препаратов за цикл, одновременно или поочерёдно</li>
+          <li>Расход рабочего раствора 3,5 л/т против 4,5 л/т у аналогов</li>
+        </ul>
+        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену</a></div>
+        <p class="note">Есть старшая модель R‑900 — до 10 т/ч, партия 80 л.</p>
+      </div>
     </div>
   </div></section>
 
@@ -419,8 +465,8 @@
 <!-- ================= КАТАЛОГ ================= -->
 <main id="katalog" hidden>
   <div class="w ptitle"><div><div class="mono">Что производим</div><h1>Оборудование</h1></div><p class="lead">Проектируем и собираем в Воронеже, ставим по всей России. Цена по запросу под вашу конфигурацию.</p></div>
-  <section class="sec" style="padding-top:32px"><div class="w"><div class="grid" data-cards></div></div></section>
-  <section class="sec white"><div class="w">
+  <section class="sec" style="padding-top:32px"><div class="w"><div class="clist" data-rows></div></div></section>
+  <section class="sec white" hidden><div class="w">
     <div class="head"><div><div class="mono">Под ключ</div><h2>Линия целиком, а не машина отдельно</h2></div><a class="lnk" href="#/kontakty"><span>Обсудить проект</span><span>→</span></a></div>
     <div class="split">
       <div class="txt"><h3>Приёмка, протравливание, выгрузка</h3><p>Нория подаёт семена в Айвери, раствор готовится в ёмкостях смешивания и подаётся по убыли веса, выгрузная нория отдаёт партию в биг-бэг. Аспирация убирает пыль, всё управляется с одной панели.</p>
@@ -502,8 +548,9 @@
 
 <!-- ================= УСЛУГИ ================= -->
 <main id="uslugi" hidden>
-  <div class="w ptitle"><div><div class="mono">Услуги</div><h1>Подготовка семян</h1></div><p class="lead">Полный цикл на нашей площадке: от приёмки зерна до упаковки. Те же операции, что на семенных заводах.</p></div>
-  <section class="sec" style="padding-top:32px"><div class="w">
+  <div class="w ptitle"><div><div class="mono">Что делаем</div><h1>Услуги</h1></div><p class="lead">Полный цикл подготовки семян на нашей площадке — от приёмки зерна до упаковки, плюс монтаж и сервис оборудования по всей России.</p></div>
+  <section class="sec" style="padding-top:32px"><div class="w"><div class="clist" data-srows></div></div></section>
+  <section class="sec" hidden><div class="w">
     <div class="cells">
       <div><div class="n">01</div><h3>Приёмка</h3><p>Приём зерна через завальную яму.</p></div>
       <div><div class="n">02</div><h3>Очистка и калибровка</h3><p>Удаление примесей, разделение по размеру.</p></div>
@@ -634,6 +681,32 @@ function card(p,full){
   return a;
 }
 document.querySelectorAll('[data-cards]').forEach(g=>P.forEach(p=>g.appendChild(card(p, g.classList.contains('grid')))));
+/* ---------- catalog rows: equipment and services in one format ---------- */
+function row(p){
+  const d=document.createElement('div'); d.className='crow';
+  const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
+  const acts=p.link
+    ?`<a class="btn primary" href="#/${p.id}">Подробнее <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену</a>`
+    :`<a class="btn primary" href="#/kontakty">${p.cta||'Запросить цену'} <span class="plus">→</span></a><a class="btn ghost" href="tel:+79518675358">Позвонить</a>`;
+  d.innerHTML=`<div class="cat">${p.cat}</div><div class="nm"><h3>${p.name}</h3><p>${p.desc}</p></div><div class="sp">${specs}</div><div class="ac">${acts}</div>`;
+  return d;
+}
+document.querySelectorAll('[data-rows]').forEach(g=>P.forEach(p=>g.appendChild(row(p))));
+const S=[
+ {cat:'Подработка', name:'Очистка и калибровка семян', desc:'Удаление примесей, разделение по размеру и удельному весу, фотосепарация по цвету и дефектам.',
+  specs:[['Операции','очистка · калибровка · сепарация'],['Приёмка','через завальную яму'],['Результат','кондиционные семена']], cta:'Рассчитать партию'},
+ {cat:'Протравливание', name:'Протравливание партий', desc:'Порционная обработка на машинах Айвери с подсушкой семян после нанесения препаратов.',
+  specs:[['Компоненты','до 4 за цикл'],['Машины','Айвери R-700 / R-900'],['Сухие добавки','инокулянт, тальк, красители']], cta:'Рассчитать партию'},
+ {cat:'Протравливание', name:'Инкрустация и дражирование', desc:'Плёнкообразующий состав с препаратами или оболочка для калиброванного посева.',
+  specs:[['Инкрустация','плёнкообразователь + препараты'],['Дражирование','оболочка под калиброванный посев'],['Подсушка','между нанесениями']], cta:'Рассчитать партию'},
+ {cat:'Упаковка', name:'Упаковка семян', desc:'Весовое дозирование и фасовка готовых семян в тару заказчика.',
+  specs:[['Тара','биг-бэги, мешки'],['Дозирование','весовое, дозаторы МЕРА'],['Порция','до 1000 кг']], cta:'Рассчитать партию'},
+ {cat:'Монтаж', name:'Монтаж и пусконаладка линий', desc:'Проект размещения по чертежам цеха, монтаж, обвязка, запуск и обучение оператора.',
+  specs:[['География','вся Россия'],['Включает','проект · монтаж · обвязка · обучение'],['Металлоконструкции','изготавливаем сами']], cta:'Обсудить проект'},
+ {cat:'Сервис', name:'Сервис и запчасти', desc:'Гарантия на оборудование, выезд инженера, изнашиваемые детали и футеровка в наличии.',
+  specs:[['Гарантия','на всё оборудование'],['Запчасти','в наличии, российские'],['Выезд инженера','по заявке']], cta:'Оставить заявку'},
+];
+document.querySelectorAll('[data-srows]').forEach(g=>S.forEach(p=>g.appendChild(row(p))));
 const SV=[
  {cat:'Услуга', name:'Подготовка семян полного цикла', v:'8', u:'этапов'},
  {cat:'Услуга', name:'Протравливание, инкрустация, дражирование', v:'до 4', u:'компонентов'},
