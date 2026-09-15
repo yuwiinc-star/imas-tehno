@@ -7,7 +7,7 @@
     --txt:#171716;--txt-2:#3A3A38;--muted:#6E6D68;--muted-l:#8A8A85;--rule:rgba(23,23,22,.09);--rule-l:rgba(23,23,22,.15);--rule-h:rgba(23,23,22,.35);--field:#FFFFFF;--chip:#171716;--chip-txt:#FFFFFF;
     --dk-bg:#0F1010;--dk-card:#1A1B1A;
     --display:'Unbounded',Arial,sans-serif;--body:'Golos Text',Arial,sans-serif;--mono:'JetBrains Mono',Menlo,monospace;
-    --w:min(1700px, calc(100% - 2*clamp(20px,5vw,120px)));--gap:16px;--sec:clamp(64px,5.5vw,96px);--navh:72px}
+    --w:min(1700px, calc(100% - 2*clamp(20px,5vw,120px)));--gap:16px;--sec:clamp(64px,5.5vw,96px);--navh:84px}
   .hero,footer,.dark,.dk,.menu,.cta .box{--bg:#0F1010;--bg-2:#161717;--sand-2:#1E1F1E;--card-2:#1E1F1E;--card:#1A1B1A;--txt:#F2F2F0;--txt-2:#C9C9C5;--muted:#9C9C98;--muted-l:#7C7C78;--rule:rgba(255,255,255,.09);--rule-l:rgba(255,255,255,.14);--rule-h:rgba(255,255,255,.35);--field:#111212;--chip:#FFFFFF;--chip-txt:#0F1010;color:var(--txt)}
   *{box-sizing:border-box}
   [hidden]{display:none!important}
@@ -37,12 +37,13 @@
   .brand svg{flex:none}.brand em{font-style:normal;opacity:.75}
   .nav ul{display:flex;gap:clamp(20px,1.8vw,34px);list-style:none;margin:0;padding:0}
   .nav ul a{color:#fff;opacity:.85;font-weight:500;padding:6px 0;border-bottom:2px solid transparent;text-transform:none;letter-spacing:0;font-size:15px}.nav ul a:hover{opacity:1}.nav ul a.on{opacity:1;border-color:var(--red)}
-  .nav .rgt{display:flex;align-items:center;gap:4px}
-  .nav .tel{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;color:#fff;border:1px solid rgba(255,255,255,.16);border-radius:12px;font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:0;font-variant-numeric:tabular-nums;transition:background .2s}
-  .nav .tel svg{width:20px;height:20px;flex:none}
-  .nav .tel:hover,.nav .soc:hover{background:rgba(255,255,255,.12)}
-  .nav .soc{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;transition:background .2s}
-  .nav .soc svg{width:22px;height:22px}
+  .nav .rgt{display:flex;align-items:center;gap:8px}
+  .nav .tel{display:inline-flex;align-items:center;gap:12px;height:54px;padding:0 24px;color:#fff;background:#E23D31;border:1px solid #E23D31;border-radius:14px;font-family:var(--body);font-size:18px;font-weight:700;letter-spacing:0;font-variant-numeric:tabular-nums;box-shadow:0 8px 24px rgba(226,61,49,.35);transition:background .2s,transform .2s}
+  .nav .tel svg{width:24px;height:24px;flex:none}
+  .nav .tel:hover{background:#F04A3E;transform:translateY(-1px)}
+  .nav .soc{width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.35);background:rgba(20,21,20,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:14px;color:#fff;transition:background .2s,border-color .2s}
+  .nav .soc:hover{background:rgba(255,255,255,.16);border-color:#fff}
+  .nav .soc svg{width:28px;height:28px}
   .nav .catbtn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0F1010;border-radius:10px;padding:9px 14px;font-size:14px;font-weight:600;text-transform:none;letter-spacing:0}
   .nav .in{width:var(--w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
   .nav .lft{display:flex;align-items:center;gap:20px}
@@ -111,7 +112,7 @@
   .hero .qgroup.srv a:hover{border-color:rgba(226,61,49,.6)}
   .hero .qgroup.srv a i{background:rgba(226,61,49,.28)}
   @media(max-width:1200px){.hero .qgroup.srv::before{left:0;right:0;top:-28px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.22) 30%,rgba(255,255,255,.22) 70%,rgba(255,255,255,0))}}
-  .hero .quick a{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:164px;padding:20px 22px;border-radius:var(--r);background:rgba(20,21,20,.55);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;position:relative;transition:background .2s,border-color .2s,transform .2s}
+  .hero .quick a{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:132px;padding:20px 22px;border-radius:var(--r);background:rgba(20,21,20,.55);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;position:relative;transition:background .2s,border-color .2s,transform .2s}
   .hero .quick a:hover{background:rgba(35,36,35,.7);border-color:rgba(255,255,255,.28);transform:translateY(-2px)}
   .hero .quick a i{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-style:normal}
   .hero .quick a i svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -120,7 +121,7 @@
   .hero .quick a .tag{position:absolute;top:22px;left:22px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:20px;background:rgba(226,61,49,.25);color:#FF9B93}
   @media(max-width:1200px){.hero .quick{grid-template-columns:1fr;gap:56px}.hero .quick a{min-height:140px}}
   @media(max-width:760px){.hero .qgroup{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:520px){.hero .qgroup{grid-template-columns:1fr}.hero .quick a{min-height:0;padding-right:70px}}
+  @media(max-width:520px){.hero .qgroup{grid-template-columns:1fr}.hero .quick a{min-height:0}}
   .hero .in{position:relative;align-self:center;padding:calc(var(--navh) + 40px) 0 clamp(36px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 48px;align-items:end}
   .hero .nums{display:flex;gap:clamp(18px,2.5vw,40px);flex-wrap:wrap;margin-bottom:28px}
   .hero .nums div{padding-left:14px;border-left:2px solid var(--red)}
@@ -354,14 +355,14 @@
     </div>
     <div class="quick">
       <div class="qgroup"><div class="ql">Оборудование</div>
-<a href="#/ayveri"><i><svg viewBox="0 0 24 24"><path d="M5 3h14l-2 6H7z"/><rect x="6" y="11" width="12" height="7" rx="3.5"/><path d="M9 14.5h6"/><path d="M10 18v3M14 18v3"/></svg></i><b>Протравители семян</b><span>Порционные машины Айвери, от 1 до 10 т/ч</span></a>
-      <a href="#/katalog"><i><svg viewBox="0 0 24 24"><path d="M4 6h10l-8 12h10"/><path d="M13 15l3 3-3 3"/></svg></i><b>Транспортёры</b><span>С качающимися ковшами, бережно к семенам</span></a>
-      <a href="#/katalog"><i><svg viewBox="0 0 24 24"><path d="M7 9h10l1 10H6z"/><path d="M8.5 9V6.5a1.5 1.5 0 0 1 3 0V9M12.5 9V6.5a1.5 1.5 0 0 1 3 0V9"/><path d="M4 21h16"/></svg></i><b>Весовые дозаторы</b><span>Фасовка в мешки и биг-бэги, МЕРА</span></a>
+<a href="#/ayveri"><b>Протравители семян</b><span>Порционные машины Айвери, от 1 до 10 т/ч</span></a>
+      <a href="#/katalog"><b>Транспортёры</b><span>С качающимися ковшами, бережно к семенам</span></a>
+      <a href="#/katalog"><b>Весовые дозаторы</b><span>Фасовка в мешки и биг-бэги, МЕРА</span></a>
       </div>
       <div class="qgroup srv"><div class="ql">Услуги</div>
-      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M12 9c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 9c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 14c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 14c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 19c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 19c3 0 5-2 5-5-3 0-5 2-5 5z"/></svg></i><b>Подготовка семян</b><span>Полный цикл на нашей площадке</span></a>
-      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><ellipse cx="12" cy="14" rx="1.6" ry="2.6"/></svg></i><b>Протравливание партий</b><span>До четырёх компонентов за цикл</span></a>
-      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M21 6.5a4.5 4.5 0 0 1-6 4.2L7 18.7a2 2 0 0 1-2.8-2.8L12.3 8a4.5 4.5 0 0 1 5.7-5.5l-2.7 2.7 1.5 1.5L19.5 4A4.5 4.5 0 0 1 21 6.5z"/></svg></i><b>Монтаж и сервис</b><span>Пусконаладка по всей России</span></a>
+      <a href="#/uslugi"><b>Подготовка семян</b><span>Полный цикл на нашей площадке</span></a>
+      <a href="#/uslugi"><b>Протравливание партий</b><span>До четырёх компонентов за цикл</span></a>
+      <a href="#/uslugi"><b>Монтаж и сервис</b><span>Пусконаладка по всей России</span></a>
       </div>
     </div>
   </section>
