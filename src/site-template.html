@@ -535,9 +535,7 @@
 
     <div class="fl-gal" id="fl-gal" aria-roledescription="галерея" aria-label="Фото линии протравливания">
       <div class="fl-stage" tabindex="0">
-        <figure class="fl-photo fl-slide on">
-      <img data-img="айвери-линия-крупно" alt="Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью">
-        </figure>
+        <figure class="fl-photo fl-slide contain on"><img class="bg" data-img="гал-айвери-главное" alt="" aria-hidden="true"><img class="main" data-img="гал-айвери-главное" alt="Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью"></figure>
         <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
         <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
         <span class="fl-count" aria-live="polite">01 / 01</span>
@@ -771,8 +769,8 @@ const ZSVG=`{{ZSVG}}`;
 document.querySelectorAll('img[data-img]').forEach(i=>{ if(IMG[i.dataset.img]) i.src=IMG[i.dataset.img]; });
 /* ---------- галерея флагмана: чтобы добавить фото, положите файл в src/assets и допишите строку ---------- */
 const FL_GAL=[
+  {img:'гал-айвери-главное', alt:'Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью'},
   {img:'айвери-линия-крупно', alt:'Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью'},
-  {img:'гал-айвери-шкаф', fit:'contain', alt:'Айвери R‑700 со шкафом управления и сенсорной панелью'},
   {img:'гал-айвери-бок', fit:'contain', alt:'Айвери сбоку: бункер, камера смешивания, пневматика'},
   {img:'гал-айвери-камера', fit:'contain', alt:'Камера смешивания Айвери крупным планом'},
   {img:'гал-айвери-привод', fit:'contain', alt:'Приводы и воздуходувка под камерой смешивания'},
