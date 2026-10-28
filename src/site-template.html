@@ -475,8 +475,13 @@
     .pdp .fl-plate .fl-key.three div:nth-child(3){grid-column:1/-1}.pdp .fl-feat{grid-template-columns:1fr}}
   .pdp .fl-stage{aspect-ratio:6/7}
   .pdp .fl-thumbs button{aspect-ratio:6/7}
-  @media(max-width:1240px){.fl-layout.pdp{grid-template-columns:minmax(340px,45%) minmax(0,1fr)}}
+  @media(min-width:901px) and (max-width:1240px){.fl-layout.pdp{grid-template-columns:minmax(340px,45%) minmax(0,1fr)}}
   @media(max-width:900px){.pdp .fl-gal{max-width:560px}}
+  .pdp .fl-name{text-wrap:balance;white-space:normal}
+  .fl-grp{padding:12px 20px 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .fl-grp+.fl-key{margin-top:-2px}
+  .fl-key+.fl-grp{border-top:1px solid var(--rule)}
+  .pdp .fl-plate .fl-key dd{white-space:nowrap}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -696,10 +701,10 @@
     </div>
   </div></section>
 
-  <!-- 3b: дозаторы МЕРА -->
+  <!-- 3b: транспортёры и дозаторы МЕРА -->
   <section class="sec flagship flagship-2" aria-labelledby="mr-name"><div class="w">
     <div class="fl-layout pdp">
-      <div class="fl-gal" id="mr-gal" aria-roledescription="галерея" aria-label="Фото дозаторов МЕРА">
+      <div class="fl-gal" id="mr-gal" aria-roledescription="галерея" aria-label="Фото транспортёров и дозаторов МЕРА">
       <div class="fl-stage" tabindex="0">
       <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-цех" style="object-position:70% 50%" alt="Линия фасовки МЕРА в цехе: накопительные бункеры, нории и станция наполнения биг‑бэгов"></figure>
       <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
@@ -710,25 +715,32 @@
       </div>
       <div class="fl-info">
         <div class="fl-head">
-          <div class="mono">Фасовка · весовые дозаторы</div>
-          <h2 class="fl-name" id="mr-name">Дозаторы МЕРА</h2>
-          <p>Фасовка зерна, семян и других сыпучих продуктов в биг‑бэги и мешки. Работают отдельно или в составе автоматизированной линии.</p>
+          <div class="mono">Транспортировка и фасовка</div>
+          <h2 class="fl-name" id="mr-name">Транспортёры и дозаторы МЕРА</h2>
+          <p>Транспортёр с качающимися ковшами бережно подаёт семена в бункер, весовой дозатор МЕРА фасует их в биг‑бэги и мешки. Работают в паре или по отдельности и встраиваются в автоматизированную линию.</p>
         </div>
-        <div class="fl-plate" role="group" aria-label="Технические данные дозаторов МЕРА">
-        <div class="fl-plate-hd"><span>Технические данные</span><span>Дозаторы <b>МЕРА</b></span></div>
+        <div class="fl-plate" role="group" aria-label="Технические данные транспортёров и дозаторов МЕРА">
+        <div class="fl-plate-hd"><span>Технические данные</span><span>Линия <b>фасовки</b></span></div>
+        <div class="fl-grp">Транспортёр с качающимися ковшами</div>
         <dl class="fl-key three">
-        <div><dt>Порция в биг‑бэг</dt><dd>до 1000<small>кг</small></dd></div>
-        <div><dt>Порция в мешок</dt><dd>до 80<small>кг</small></dd></div>
-        <div><dt>Запас прочности</dt><dd>3<small>×</small></dd></div>
+          <div><dt>Производительность</dt><dd>до 20<small>м³/ч</small></dd></div>
+          <div><dt>Ширина ковша</dt><dd>250 / 420<small>мм</small></dd></div>
+          <div><dt>Формы трассы</dt><dd>Z · I · C · E</dd></div>
+        </dl>
+        <div class="fl-grp">Весовой дозатор МЕРА</div>
+        <dl class="fl-key three">
+          <div><dt>Порция в биг‑бэг</dt><dd>до 1000<small>кг</small></dd></div>
+          <div><dt>Порция в мешок</dt><dd>до 80<small>кг</small></dd></div>
+          <div><dt>Запас прочности</dt><dd>3<small>×</small></dd></div>
         </dl>
         <div class="fl-plate-ft"><span>Модели <b>МЕРА‑1000, МЕРА‑80</b></span><span>Режимы <b>автоматический и ручной</b></span><span>Тара <b>биг‑бэги, мешки</b></span></div>
         </div>
         <div class="acts"><a class="btn primary" href="#/kontakty">Запросить цену <span class="plus">+</span></a><a class="btn ghost" href="#/katalog">Всё оборудование <span class="plus">→</span></a></div>
         <ul class="fl-feat">
-        <li><b>Высокая точность дозирования</b><span>Каждая порция взвешивается перед сбросом в тару.</span></li>
-        <li><b>Защита от перегрузки</b><span>Защищает от перегрузки и от сброса наполненных мешков.</span></li>
-        <li><b>Удобная панель управления</b><span>Автоматический режим или ручное управление оператором.</span></li>
-        <li><b>Прочная металлическая конструкция</b><span>Запас прочности механизмов в 3 раза выше нагрузки, отвечает требованиям техники безопасности.</span></li>
+          <li><b>Без повреждения семян</b><span>Качающиеся ковши не пересыпают продукт на поворотах трассы.</span></li>
+          <li><b>Горизонтально и вертикально</b><span>Одна трасса вместо нескольких конвейеров, нужно немного места.</span></li>
+          <li><b>Точное дозирование</b><span>Каждая порция взвешивается, защита от перегрузки и сброса мешков.</span></li>
+          <li><b>Автоматика и дистанционное управление</b><span>Автоматический и ручной режим, низкий шум и вибрация.</span></li>
         </ul>
       </div>
     </div>
