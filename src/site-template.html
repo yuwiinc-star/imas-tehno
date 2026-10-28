@@ -701,7 +701,7 @@
     <div class="fl-layout pdp">
       <div class="fl-gal" id="mr-gal" aria-roledescription="галерея" aria-label="Фото дозаторов МЕРА">
       <div class="fl-stage" tabindex="0">
-      <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-станция" alt="Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга"></figure>
+      <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-цех" style="object-position:70% 50%" alt="Линия фасовки МЕРА в цехе: накопительные бункеры, нории и станция наполнения биг‑бэгов"></figure>
       <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
       <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
       <span class="fl-count" aria-live="polite">01 / 01</span>
@@ -966,7 +966,7 @@ function mkGal(id, LIST){
   LIST.slice(1).forEach(g=>{
     const f=document.createElement('figure'); f.className='fl-photo fl-slide'+(g.fit==='contain'?' contain':'');
     f.innerHTML=(g.fit==='contain'?'<img class="bg" alt="" aria-hidden="true">':'')+'<img class="main">'+(g.cap?'<figcaption></figcaption>':'');
-    f.querySelectorAll('img').forEach(im=>im.src=IMG[g.img]); f.querySelector('img.main').alt=g.alt;
+    f.querySelectorAll('img').forEach(im=>im.src=IMG[g.img]); f.querySelector('img.main').alt=g.alt; if(g.pos) f.querySelector('img.main').style.objectPosition=g.pos;
     if(g.cap) f.querySelector('figcaption').textContent=g.cap;
     stage.insertBefore(f, prevBtn); slides.push(f);
   });
@@ -983,6 +983,7 @@ function mkGal(id, LIST){
   go(0);
 }
 const MR_GAL=[
+  {img:'гал-мера-цех', pos:'70% 50%', alt:'Линия фасовки МЕРА в цехе: накопительные бункеры, нории и станция наполнения биг‑бэгов'},
   {img:'гал-мера-станция', alt:'Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга'},
   {img:'гал-мера-подвес', alt:'Узел подвеса биг‑бэга с пневмозахватами под весовым бункером МЕРА'},
   {img:'гал-мера-рукав', alt:'Загрузочный рукав и держатель горловины биг‑бэга'},
