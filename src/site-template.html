@@ -279,6 +279,46 @@
   @media(max-width:1000px){.feat,.prod{grid-template-columns:1fr}.feat .pic,.prod .pic{min-height:0;aspect-ratio:16/10}.prod .pic{order:-1}.tiles.four{grid-template-columns:repeat(2,minmax(0,1fr))}.qcard{grid-template-columns:1fr}.qcard figcaption{white-space:normal}}
   @media(max-width:600px){.feat .txt,.prod .txt{padding:22px}.bhead{flex-direction:column;align-items:flex-start;gap:8px}}
 
+
+  /* ============ флагман: фото с выносками, цифры, шкала линейки ============ */
+  .flagship .fl-top{display:grid;grid-template-columns:auto minmax(300px,440px);justify-content:space-between;gap:24px 56px;align-items:end;margin-bottom:36px}
+  .fl-name{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,4.8vw,5.2rem);line-height:.95;letter-spacing:-.03em;margin:14px 0 0;text-wrap:nowrap}
+  .fl-name span{color:var(--red)}
+  .fl-side p{margin:0 0 22px;color:var(--txt-2);font-size:clamp(15px,1.05vw,17px);line-height:1.55;max-width:52ch}
+  .fl-photo{position:relative;margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:#2a2d28;--vis:.844;--off:.094}
+  .fl-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+  .fl-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,16,16,0) 65%,rgba(15,16,16,.45));pointer-events:none}
+  .fl-photo figcaption{position:absolute;left:22px;bottom:18px;z-index:2;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+  .fl-hs{position:absolute;z-index:2;left:calc(var(--x) * 100%);top:calc((var(--y) - var(--off)) / var(--vis) * 100%);transform:translate(-15px,-15px);display:flex;align-items:center;gap:10px;pointer-events:none}
+  .fl-hs i,.fl-legend i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;font:600 13px/30px var(--body);font-style:normal;text-align:center;box-shadow:0 0 0 5px rgba(226,61,49,.28)}
+  .fl-hs i{animation:hsPulse 2.6s ease-out infinite}
+  @keyframes hsPulse{0%{box-shadow:0 0 0 0 rgba(226,61,49,.55)}70%{box-shadow:0 0 0 12px rgba(226,61,49,0)}100%{box-shadow:0 0 0 0 rgba(226,61,49,0)}}
+  .fl-hs em{font-style:normal;font-family:var(--body);font-size:13.5px;font-weight:500;line-height:1.3;color:#fff;background:rgba(15,16,16,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:7px 12px;border-radius:999px;white-space:nowrap}
+  .fl-legend{display:none;list-style:none;margin:14px 0 0;padding:0;gap:10px 18px;grid-template-columns:1fr 1fr}
+  .fl-legend li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.35;color:var(--txt-2)}
+  .fl-legend i{width:24px;height:24px;font-size:12px;line-height:24px;box-shadow:none}
+  .fl-specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:40px 0 0;border-top:1px solid var(--rule-l)}
+  .fl-specs div{padding:22px 24px 4px 0}
+  .fl-specs div+div{padding-left:24px;border-left:1px solid var(--rule-l)}
+  .fl-specs dt{font-size:13.5px;color:var(--muted);margin-bottom:10px}
+  .fl-specs dd{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(2rem,3.4vw,3.4rem);line-height:1;letter-spacing:-.03em;color:var(--txt);font-variant-numeric:tabular-nums}
+  .fl-specs dd small{font-family:var(--body);font-weight:500;font-size:.34em;letter-spacing:0;color:var(--muted);margin-left:6px}
+  .fl-range{margin-top:48px;padding:26px 28px 30px;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
+  .fl-range-hd{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:600;color:var(--txt)}
+  .scale{position:relative;height:92px;margin:10px 14px 0}
+  .scale .track{position:absolute;left:0;right:0;top:46px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--rule-l),var(--rule-h))}
+  .scale .tick{position:absolute;top:56px;left:calc(var(--v) / 10 * 100%);transform:translateX(-50%);font-family:var(--mono);font-size:11.5px;color:var(--muted-l)}
+  .scale .tick::before{content:"";position:absolute;left:50%;top:-10px;width:1px;height:6px;background:var(--rule-h)}
+  .scale .mk{position:absolute;left:calc(var(--v) / 10 * 100%);top:10px;transform:translateX(-50%);display:flex;align-items:baseline;gap:6px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+  .scale .mk b{font-family:var(--display);font-weight:700;font-size:13px;color:var(--txt)}
+  .scale .mk small{font-size:12.5px}
+  .scale .mk::after{content:"";position:absolute;left:50%;top:29px;margin-left:-8px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--txt);box-sizing:border-box}
+  .scale .mk.on b,.scale .mk.on{color:var(--red)}.scale .mk.on::after{background:var(--red);border-color:var(--red);box-shadow:0 0 0 6px rgba(226,61,49,.18)}
+  .scale .mk.end{transform:translateX(-100%)}.scale .mk.end::after{left:100%}
+  @media(max-width:1100px){.flagship .fl-top{grid-template-columns:1fr;gap:18px}}
+  @media(max-width:900px){.fl-photo{aspect-ratio:3/2;--vis:1;--off:0}.fl-hs em{display:none}.fl-hs{transform:translate(-13px,-13px)}.fl-hs i{width:26px;height:26px;line-height:26px}.fl-legend{display:grid}.fl-specs{grid-template-columns:1fr 1fr}.fl-specs div:nth-child(3){border-left:0;padding-left:0}.fl-specs div:nth-child(n+3){border-top:1px solid var(--rule-l)}}
+  @media(max-width:560px){.fl-legend{grid-template-columns:1fr}.fl-name{text-wrap:wrap}.fl-range{padding:22px 18px 26px}.scale{margin:10px 8px 0}.scale .tick{display:none}.scale .mk small{display:none}.scale .mk.dn{top:auto;bottom:6px}.scale .mk.dn::after{top:-22px}.fl-photo figcaption{display:none}}
+  @media(prefers-reduced-motion:reduce){.fl-hs i{animation:none}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -460,28 +500,52 @@
   </div></section>
 
   <!-- 3: флагман Айвери 700 -->
-  <section class="sec white"><div class="w"><div class="blk">
-    <div class="bhead"><div><div class="mono">Флагман</div><h2>Протравитель семян Айвери 700</h2></div><a class="lnk" href="#/ayveri"><span>Все модели</span><span>→</span></a></div>
-    <div class="feat">
-      <div class="pic"><img src="{{IMG:линия-общий-вид-2}}" alt="Протравитель семян Айвери 700 в линии с дозирующими ёмкостями"></div>
-      <div class="txt">
-        <p class="lead">Порционная машина для протравливания, инкрустации и дражирования. Дозирование по убыли веса, бережная обработка, подсушка семян после нанесения.</p>
-        <div class="tiles four">
-          <div><span>Производительность</span><b>до 6,5 <small>т/ч</small></b></div>
-          <div><span>Объём партии</span><b>55 <small>л</small></b></div>
-          <div><span>Дозаторы</span><b>4 + 2 <small>жидк. / сух.</small></b></div>
-          <div><span>Мощность</span><b>6,2 <small>кВт</small></b></div>
-        </div>
-        <ul class="checks">
-          <li><b>Ротор и статор PE‑1000</b> — износостойкое покрытие узлов</li>
-          <li><b>До 4 препаратов за цикл</b> — с подсушкой между нанесениями</li>
-          <li><b>Рецепт под партию</b> — контроллер хранит настройки, оператор меняет их на ходу</li>
-        </ul>
-        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="lnk" href="#/kontakty"><span>Запросить цену</span><span>→</span></a></div>
-        <p class="note">Старшая модель R‑900 — до 10 т/ч, партия 80 л.</p>
+  <section class="sec white flagship" aria-labelledby="fl-name"><div class="w">
+    <div class="fl-top">
+      <div>
+        <div class="mono">Флагман · порционный протравитель</div>
+        <h2 class="fl-name" id="fl-name">Айвери <span>R‑700</span></h2>
+      </div>
+      <div class="fl-side">
+        <p>Протравливание, инкрустация и дражирование в одной машине. До четырёх препаратов за цикл с подсушкой между нанесениями, рецепт хранится в контроллере.</p>
+        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену <span class="plus">+</span></a></div>
       </div>
     </div>
-  </div></div></section>
+
+    <figure class="fl-photo">
+      <img data-img="айвери-линия-крупно" alt="Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью">
+      <span class="fl-hs" style="--x:.672;--y:.36"><i>1</i><em>Ротор и статор, футеровка PE‑1000</em></span>
+      <span class="fl-hs" style="--x:.553;--y:.615"><i>2</i><em>Дозирующая ёмкость на тензодатчиках</em></span>
+      <span class="fl-hs" style="--x:.135;--y:.62"><i>3</i><em>Ёмкости смешивания препаратов</em></span>
+      <span class="fl-hs" style="--x:.47;--y:.83"><i>4</i><em>Перистальтические насосы</em></span>
+      <figcaption>Линия протравливания на площадке заказчика</figcaption>
+    </figure>
+    <ol class="fl-legend">
+      <li><i>1</i>Камера смешивания: ротор и статор, футеровка PE‑1000</li>
+      <li><i>2</i>Дозирующая ёмкость на тензодатчиках</li>
+      <li><i>3</i>Ёмкости смешивания препаратов</li>
+      <li><i>4</i>Перистальтические насосы</li>
+    </ol>
+
+    <dl class="fl-specs">
+      <div><dt>Производительность</dt><dd>6,5<small>т/ч</small></dd></div>
+      <div><dt>Объём партии</dt><dd>55<small>л</small></dd></div>
+      <div><dt>Дозаторы, жидк. + сух.</dt><dd>4+2</dd></div>
+      <div><dt>Потребляемая мощность</dt><dd>6,2<small>кВт</small></dd></div>
+    </dl>
+
+    <div class="fl-range">
+      <div class="fl-range-hd"><span>Линейка Айвери · производительность, т/ч</span><a class="lnk" href="#/ayveri"><span>Сравнить модели</span><span>→</span></a></div>
+      <div class="scale" role="img" aria-label="Четыре модели: R‑300 до 1 т/ч, R‑700 до 6,5 т/ч, R‑800 до 7,5 т/ч, R‑900 до 10 т/ч">
+        <div class="track"></div>
+        <span class="tick" style="--v:0">0</span><span class="tick" style="--v:2">2</span><span class="tick" style="--v:4">4</span><span class="tick" style="--v:6">6</span><span class="tick" style="--v:8">8</span><span class="tick" style="--v:10">10</span>
+        <span class="mk" style="--v:1"><b>R‑300</b><small>до 1</small></span>
+        <span class="mk on" style="--v:6.5"><b>R‑700</b><small>до 6,5</small></span>
+        <span class="mk dn" style="--v:7.5"><b>R‑800</b><small>до 7,5</small></span>
+        <span class="mk end" style="--v:10"><b>R‑900</b><small>до 10</small></span>
+      </div>
+    </div>
+  </div></section>
 
   <!-- 4 -->
   <section class="sec"><div class="w"><div class="blk">
