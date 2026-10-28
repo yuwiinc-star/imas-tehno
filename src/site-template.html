@@ -450,6 +450,29 @@
   .fl-plate-hd{flex-wrap:wrap}
   @media(max-width:1240px){.fl-layout{justify-content:stretch;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"gal top" "gal data";grid-template-rows:auto auto;align-content:center;row-gap:24px}.fl-data{max-width:460px}}
   @media(max-width:900px){.fl-layout{grid-template-columns:1fr;grid-template-areas:"top" "gal" "data";row-gap:28px}.fl-layout .fl-gal{width:100%}.fl-data{max-width:none}}
+  /* ===== карточка товара (PDP): галерея | одна колонка информации ===== */
+  .fl-layout.pdp{display:grid;grid-template-columns:minmax(0,410px) minmax(0,600px);grid-template-areas:none;grid-template-rows:auto;justify-content:center;align-items:start;column-gap:clamp(40px,5vw,80px);row-gap:0}
+  .pdp .fl-gal{width:auto;grid-area:auto;order:0}
+  .pdp .fl-info{grid-area:auto;order:0;display:flex;flex-direction:column;gap:24px;padding-top:6px}
+  .pdp .fl-head .mono{margin-bottom:10px}
+  .pdp .fl-head .fl-name{margin:0 0 14px}
+  .pdp .fl-head p{margin:0;color:var(--txt-2);font-size:clamp(15px,1.05vw,17px);line-height:1.55;max-width:56ch}
+  .pdp .fl-plate .fl-key,.pdp .fl-plate .fl-key.three{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .pdp .fl-plate .fl-key.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .pdp .fl-plate .fl-key div,.pdp .fl-plate .fl-key div:nth-child(odd),.pdp .fl-plate .fl-key div:nth-child(n+3){padding:14px 16px 13px;border-top:0;border-left:1px solid var(--rule);grid-column:auto}
+  .pdp .fl-plate .fl-key div:first-child{border-left:0;padding-left:20px}
+  .pdp .fl-plate .fl-key dd{font-size:clamp(1.3rem,1.55vw,1.6rem)}
+  .pdp .fl-plate .fl-key div{display:flex;flex-direction:column;justify-content:space-between}
+  .pdp .fl-plate-ft{flex-direction:row;flex-wrap:wrap;gap:4px 22px}
+  .pdp .acts{margin:0}
+  .pdp .fl-feat{grid-template-columns:1fr 1fr;gap:16px 28px;border-top:1px solid var(--rule-l);padding-top:22px}
+  .pdp .fl-feat b{font-size:14.5px}
+  .pdp .fl-feat span{font-size:13.5px;color:var(--txt-2)}
+  @media(max-width:1100px){.fl-layout.pdp{grid-template-columns:minmax(0,400px) minmax(0,1fr)}}
+  @media(max-width:900px){.fl-layout.pdp{grid-template-columns:1fr;row-gap:28px}.pdp .fl-gal{max-width:440px;width:100%;margin:0 auto}}
+  @media(max-width:640px){.pdp .fl-plate .fl-key,.pdp .fl-plate .fl-key.three{grid-template-columns:1fr 1fr}
+    .pdp .fl-plate .fl-key div:nth-child(3){border-left:0;padding-left:20px}.pdp .fl-plate .fl-key div:nth-child(n+3){border-top:1px solid var(--rule)}
+    .pdp .fl-plate .fl-key.three div:nth-child(3){grid-column:1/-1}.pdp .fl-feat{grid-template-columns:1fr}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -632,7 +655,7 @@
 
   <!-- 3: флагман Айвери 700 -->
   <section class="sec white flagship" aria-labelledby="fl-name"><div class="w">
-    <div class="fl-layout">
+    <div class="fl-layout pdp">
       <div class="fl-gal" id="fl-gal" aria-roledescription="галерея" aria-label="Фото Айвери">
       <div class="fl-stage" tabindex="0">
       <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-айвери-главное" alt="Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью"></figure>
@@ -643,78 +666,66 @@
       <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
       </div>
       <div class="fl-info">
-        <div class="fl-top">
-          <div>
-            <div class="mono">Флагман · порционный протравитель</div>
-            <h2 class="fl-name" id="fl-name">Айвери <span>R‑700</span></h2>
-          </div>
-          <div class="fl-side">
-            <p>Протравливание, инкрустация и дражирование в одной машине. До четырёх препаратов за цикл с подсушкой между нанесениями, рецепт хранится в контроллере.</p>
-            <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену <span class="plus">+</span></a></div>
-          </div>
+        <div class="fl-head">
+          <div class="mono">Флагман · порционный протравитель</div>
+          <h2 class="fl-name" id="fl-name">Айвери <span>R‑700</span></h2>
+          <p>Протравливание, инкрустация и дражирование в одной машине. До четырёх препаратов за цикл с подсушкой между нанесениями, рецепт хранится в контроллере.</p>
         </div>
-      </div>
-      <div class="fl-data">
         <div class="fl-plate" role="group" aria-label="Технические данные Айвери R‑700">
-          <div class="fl-plate-hd"><span>Технические данные</span><span>Айвери <b>R‑700</b></span></div>
-          <dl class="fl-key">
-            <div><dt>Производительность</dt><dd>до 6,5<small>т/ч</small></dd></div>
-            <div><dt>Объём партии</dt><dd>55<small>л</small></dd></div>
-            <div><dt>Дозаторы жидк. + сух.</dt><dd>4+2</dd></div>
-            <div><dt>Мощность</dt><dd>6,2<small>кВт</small></dd></div>
-          </dl>
-          <ul class="fl-feat">
+        <div class="fl-plate-hd"><span>Технические данные</span><span>Айвери <b>R‑700</b></span></div>
+        <dl class="fl-key">
+        <div><dt>Производительность</dt><dd>до 6,5<small>т/ч</small></dd></div>
+        <div><dt>Объём партии</dt><dd>55<small>л</small></dd></div>
+        <div><dt>Дозаторы жидк. + сух.</dt><dd>4+2</dd></div>
+        <div><dt>Мощность</dt><dd>6,2<small>кВт</small></dd></div>
+        </dl>
+        <div class="fl-plate-ft"><span>Габариты <b>1800 × 850 × 2500 мм</b></span><span>Масса <b>765 кг</b></span><span>Ротор <b>Ø 700 мм</b></span></div>
+        </div>
+        <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену <span class="plus">+</span></a></div>
+        <ul class="fl-feat">
         <li><b>Перемешивание «восьмёркой»</b><span>Лопатки направляют поток семян к центру, препарат ложится равномерно.</span></li>
         <li><b>Дозирование по убыли веса</b><span>Весы и тензодатчики, контроллер сам корректирует дозу на каждую порцию.</span></li>
         <li><b>Подсушка в той же камере</b><span>Вихревая воздуходувка, семена выходят сыпучими, без комков.</span></li>
         <li><b>Футеровка PE‑1000</b><span>Износостойкий пластик ротора и статора, замена быстрая и простая.</span></li>
         </ul>
-          <div class="fl-plate-ft"><span>Габариты <b>1800 × 850 × 2500 мм</b></span><span>Масса <b>765 кг</b></span><span>Ротор <b>Ø 700 мм</b></span></div>
-        </div>
       </div>
     </div>
   </div></section>
 
   <!-- 3b: дозаторы МЕРА -->
   <section class="sec flagship flagship-2" aria-labelledby="mr-name"><div class="w">
-    <div class="fl-layout">
+    <div class="fl-layout pdp">
       <div class="fl-gal" id="mr-gal" aria-roledescription="галерея" aria-label="Фото дозаторов МЕРА">
-        <div class="fl-stage" tabindex="0">
-          <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-станция" alt="Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга"></figure>
-          <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
-          <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
-          <span class="fl-count" aria-live="polite">01 / 01</span>
-        </div>
-        <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
+      <div class="fl-stage" tabindex="0">
+      <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-станция" alt="Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга"></figure>
+      <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
+      <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
+      <span class="fl-count" aria-live="polite">01 / 01</span>
+      </div>
+      <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
       </div>
       <div class="fl-info">
-        <div class="fl-top">
-          <div>
-            <div class="mono">Фасовка · весовые дозаторы</div>
-            <h2 class="fl-name" id="mr-name">Дозаторы МЕРА</h2>
-          </div>
-          <div class="fl-side">
-            <p>Фасовка зерна, семян и других сыпучих продуктов в биг‑бэги и мешки. Работают отдельно или в составе автоматизированной линии.</p>
-            <div class="acts"><a class="btn primary" href="#/kontakty">Запросить цену <span class="plus">+</span></a><a class="btn ghost" href="#/katalog">Всё оборудование <span class="plus">→</span></a></div>
-          </div>
+        <div class="fl-head">
+          <div class="mono">Фасовка · весовые дозаторы</div>
+          <h2 class="fl-name" id="mr-name">Дозаторы МЕРА</h2>
+          <p>Фасовка зерна, семян и других сыпучих продуктов в биг‑бэги и мешки. Работают отдельно или в составе автоматизированной линии.</p>
         </div>
-      </div>
-      <div class="fl-data">
         <div class="fl-plate" role="group" aria-label="Технические данные дозаторов МЕРА">
-          <div class="fl-plate-hd"><span>Технические данные</span><span>Дозаторы <b>МЕРА</b></span></div>
-          <dl class="fl-key three">
-            <div><dt>Порция в биг‑бэг</dt><dd>до 1000<small>кг</small></dd></div>
-            <div><dt>Порция в мешок</dt><dd>до 80<small>кг</small></dd></div>
-            <div><dt>Запас прочности</dt><dd>3<small>×</small></dd></div>
-          </dl>
-          <ul class="fl-feat">
-          <li><b>Высокая точность дозирования</b><span>Каждая порция взвешивается перед сбросом в тару.</span></li>
-          <li><b>Защита от перегрузки</b><span>Защищает от перегрузки и от сброса наполненных мешков.</span></li>
-          <li><b>Удобная панель управления</b><span>Автоматический режим или ручное управление оператором.</span></li>
-          <li><b>Прочная металлическая конструкция</b><span>Запас прочности механизмов в 3 раза выше нагрузки, отвечает требованиям техники безопасности.</span></li>
-        </ul>
-          <div class="fl-plate-ft"><span>Модели <b>МЕРА‑1000, МЕРА‑80</b></span><span>Режимы <b>автоматический и ручной</b></span><span>Тара <b>биг‑бэги, мешки</b></span></div>
+        <div class="fl-plate-hd"><span>Технические данные</span><span>Дозаторы <b>МЕРА</b></span></div>
+        <dl class="fl-key three">
+        <div><dt>Порция в биг‑бэг</dt><dd>до 1000<small>кг</small></dd></div>
+        <div><dt>Порция в мешок</dt><dd>до 80<small>кг</small></dd></div>
+        <div><dt>Запас прочности</dt><dd>3<small>×</small></dd></div>
+        </dl>
+        <div class="fl-plate-ft"><span>Модели <b>МЕРА‑1000, МЕРА‑80</b></span><span>Режимы <b>автоматический и ручной</b></span><span>Тара <b>биг‑бэги, мешки</b></span></div>
         </div>
+        <div class="acts"><a class="btn primary" href="#/kontakty">Запросить цену <span class="plus">+</span></a><a class="btn ghost" href="#/katalog">Всё оборудование <span class="plus">→</span></a></div>
+        <ul class="fl-feat">
+        <li><b>Высокая точность дозирования</b><span>Каждая порция взвешивается перед сбросом в тару.</span></li>
+        <li><b>Защита от перегрузки</b><span>Защищает от перегрузки и от сброса наполненных мешков.</span></li>
+        <li><b>Удобная панель управления</b><span>Автоматический режим или ручное управление оператором.</span></li>
+        <li><b>Прочная металлическая конструкция</b><span>Запас прочности механизмов в 3 раза выше нагрузки, отвечает требованиям техники безопасности.</span></li>
+        </ul>
       </div>
     </div>
   </div></section>
