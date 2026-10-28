@@ -451,7 +451,7 @@
   @media(max-width:1240px){.fl-layout{justify-content:stretch;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"gal top" "gal data";grid-template-rows:auto auto;align-content:center;row-gap:24px}.fl-data{max-width:460px}}
   @media(max-width:900px){.fl-layout{grid-template-columns:1fr;grid-template-areas:"top" "gal" "data";row-gap:28px}.fl-layout .fl-gal{width:100%}.fl-data{max-width:none}}
   /* ===== карточка товара (PDP): галерея | одна колонка информации ===== */
-  .fl-layout.pdp{display:grid;grid-template-columns:480px minmax(0,1fr);grid-template-areas:none;grid-template-rows:auto;justify-content:stretch;max-width:1240px;margin-inline:0;align-items:center;column-gap:clamp(40px,4.5vw,88px);row-gap:0}
+  .fl-layout.pdp{display:grid;grid-template-columns:560px minmax(0,1fr);grid-template-areas:none;grid-template-rows:auto;justify-content:stretch;max-width:1240px;margin-inline:0;align-items:center;column-gap:clamp(40px,4.5vw,88px);row-gap:0}
   .pdp .fl-gal{width:auto;grid-area:auto;order:0}
   .pdp .fl-info{grid-area:auto;order:0;display:flex;flex-direction:column;gap:24px;padding-top:6px}
   .pdp .fl-head .mono{margin-bottom:10px}
@@ -473,10 +473,10 @@
   @media(max-width:640px){.pdp .fl-plate .fl-key,.pdp .fl-plate .fl-key.three{grid-template-columns:1fr 1fr}
     .pdp .fl-plate .fl-key div:nth-child(3){border-left:0;padding-left:20px}.pdp .fl-plate .fl-key div:nth-child(n+3){border-top:1px solid var(--rule)}
     .pdp .fl-plate .fl-key.three div:nth-child(3){grid-column:1/-1}.pdp .fl-feat{grid-template-columns:1fr}}
-  .pdp .fl-stage{aspect-ratio:4/5}
-  .pdp .fl-thumbs button{aspect-ratio:4/5}
-  @media(max-width:1100px){.fl-layout.pdp{grid-template-columns:minmax(320px,42%) minmax(0,1fr)}}
-  @media(max-width:900px){.pdp .fl-gal{max-width:480px}}
+  .pdp .fl-stage{aspect-ratio:6/7}
+  .pdp .fl-thumbs button{aspect-ratio:6/7}
+  @media(max-width:1240px){.fl-layout.pdp{grid-template-columns:minmax(340px,45%) minmax(0,1fr)}}
+  @media(max-width:900px){.pdp .fl-gal{max-width:560px}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
