@@ -13,10 +13,15 @@ def img(key):
 t=open(os.path.join(src,'site-template.html'),encoding='utf-8').read()
 import json; sys.path.insert(0,src); from zsvg import zsvg_light, zsvg_dark
 logo=open(os.path.join(root,'логотип','знак-red-dark.svg'),encoding='utf-8').read().replace('width="200" height="200"','width="34" height="34"').replace('\n','')
+# вшиваем только те картинки, на которые есть ссылка в шаблоне (ключ целиком, не часть другого имени)
+used=lambda key: re.search(r'(?<![\w-])'+re.escape(key)+r'(?![\w-])', t) is not None
 imgs={}
 for f in os.listdir(assets):
-    k=unicodedata.normalize('NFC',f); 
-    if k.endswith('.jpg') or k.endswith('.png'): imgs[k.rsplit('.',1)[0].replace('render-','render:')]=img(k.rsplit('.',1)[0].replace('render-','render:'))
+    k=unicodedata.normalize('NFC',f)
+    if k.endswith('.jpg') or k.endswith('.png'):
+        key=k.rsplit('.',1)[0].replace('render-','render:')
+        if used(key): imgs[key]=img(key)
+print('images embedded:', len(imgs), sorted(imgs))
 t=t.replace('{{LOGO}}',logo).replace('{{IMGS}}',json.dumps(imgs,ensure_ascii=False)).replace('{{ZSVG}}',zsvg_light()).replace('{{ZSVGD}}',zsvg_dark())
 t=re.sub(r'\{\{IMG:([^}]+)\}\}', lambda m: img(m.group(1)), t)
 t=t.replace('{{TREATER}}', b(os.path.join(assets,'treater.glb')))

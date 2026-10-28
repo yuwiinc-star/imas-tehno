@@ -322,6 +322,24 @@
   @media(max-width:900px){.fl-photo{aspect-ratio:3/2;--vis:1;--off:0}.fl-hs em{display:none}.fl-hs{transform:translate(-13px,-13px)}.fl-hs i{width:26px;height:26px;line-height:26px}.fl-legend{display:grid}.fl-specs{grid-template-columns:1fr 1fr}.fl-specs div:nth-child(3){border-left:0;padding-left:0}.fl-specs div:nth-child(n+3){border-top:1px solid var(--rule-l)}}
   @media(max-width:560px){.fl-legend{grid-template-columns:1fr}.fl-name{text-wrap:wrap}.fl-range{padding:22px 18px 26px}.scale{margin:10px 8px 0}.scale .tick{display:none}.scale .mk small{display:none}.scale .mk.dn{top:auto;bottom:6px}.scale .mk.dn::after{top:-22px}.fl-photo figcaption{display:none}}
   @media(prefers-reduced-motion:reduce){.fl-hs i{animation:none}}
+  .fl-stage{position:relative;aspect-ratio:16/9;border-radius:var(--r);overflow:hidden;background:#161717;--vis:.844;--off:.094;outline:none}
+  .fl-stage:focus-visible{box-shadow:0 0 0 3px var(--red)}
+  .fl-slide{position:absolute;inset:0;margin:0;aspect-ratio:auto;border-radius:0;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility 0s linear .45s}
+  .fl-slide.on{opacity:1;visibility:visible;transition:opacity .45s ease}
+  .fl-slide.contain img.main{object-fit:contain;z-index:1}
+  .fl-slide img.bg{filter:blur(28px) brightness(.5);transform:scale(1.15)}
+  .fl-slide figcaption{z-index:2}
+  .fl-nav{position:absolute;top:50%;z-index:3;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(15,16,16,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-size:20px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s}
+  .fl-nav:hover{background:var(--red);border-color:var(--red)}
+  .fl-nav.prev{left:16px}.fl-nav.next{right:16px}
+  .fl-count{position:absolute;right:18px;bottom:16px;z-index:3;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:#fff;background:rgba(15,16,16,.5);padding:5px 10px;border-radius:999px}
+  .fl-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding:3px 3px 6px;scrollbar-width:thin}
+  .fl-thumbs button{flex:none;width:120px;aspect-ratio:3/2;border-radius:10px;overflow:hidden;border:0;padding:0;cursor:pointer;background:#161717;opacity:.5;outline:2px solid transparent;outline-offset:2px;transition:opacity .2s,outline-color .2s}
+  .fl-thumbs button:hover{opacity:.85}
+  .fl-thumbs button[aria-selected="true"]{opacity:1;outline-color:var(--red)}
+  .fl-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:900px){.fl-stage{aspect-ratio:3/2;--vis:1;--off:0}.fl-nav{width:40px;height:40px;font-size:17px}.fl-nav.prev{left:10px}.fl-nav.next{right:10px}.fl-thumbs button{width:84px}}
+  @media(prefers-reduced-motion:reduce){.fl-slide,.fl-slide.on{transition:none}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -515,15 +533,23 @@
       </div>
     </div>
 
-    <figure class="fl-photo">
+    <div class="fl-gal" id="fl-gal" aria-roledescription="галерея" aria-label="Фото линии протравливания">
+      <div class="fl-stage" tabindex="0">
+        <figure class="fl-photo fl-slide on">
       <img data-img="айвери-линия-крупно" alt="Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью">
       <span class="fl-hs" style="--x:.672;--y:.36"><i>1</i><em>Ротор и статор, футеровка PE‑1000</em></span>
       <span class="fl-hs" style="--x:.553;--y:.615"><i>2</i><em>Дозирующая ёмкость на тензодатчиках</em></span>
       <span class="fl-hs" style="--x:.135;--y:.62"><i>3</i><em>Ёмкости смешивания препаратов</em></span>
       <span class="fl-hs" style="--x:.47;--y:.83"><i>4</i><em>Перистальтические насосы</em></span>
       <figcaption>Линия протравливания на площадке заказчика</figcaption>
-    </figure>
-    <ol class="fl-legend">
+        </figure>
+        <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
+        <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
+        <span class="fl-count" aria-live="polite">01 / 01</span>
+      </div>
+      <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
+    </div>
+    <ol class="fl-legend" id="fl-legend">
       <li><i>1</i>Камера смешивания: ротор и статор, футеровка PE‑1000</li>
       <li><i>2</i>Дозирующая ёмкость на тензодатчиках</li>
       <li><i>3</i>Ёмкости смешивания препаратов</li>
@@ -754,6 +780,39 @@ const IMG={{IMGS}};
 const TREATER='{{TREATER}}';
 const ZSVG=`{{ZSVG}}`;
 document.querySelectorAll('img[data-img]').forEach(i=>{ if(IMG[i.dataset.img]) i.src=IMG[i.dataset.img]; });
+/* ---------- галерея флагмана: чтобы добавить фото, положите файл в src/assets и допишите строку ---------- */
+const FL_GAL=[
+  {img:'айвери-линия-крупно', alt:'Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью'},
+  {img:'гал-линия-общий-вид', alt:'Линия протравливания целиком: ёмкости смешивания, дозирующая ёмкость, Айвери и нории', cap:'Линия целиком: ёмкости, Айвери, нории'},
+  {img:'гал-айвери-фронт', fit:'contain', alt:'Айвери спереди: бункер, камера смешивания и шкаф', cap:'Айвери спереди'},
+  {img:'гал-шкаф-управления', alt:'Шкаф управления с сенсорной панелью оператора', cap:'Шкаф управления с сенсорной панелью'},
+  {img:'гал-дозирующая-емкость', fit:'contain', alt:'Дозирующая ёмкость на тензодатчике с перистальтическим насосом', cap:'Дозирующая ёмкость на тензодатчике'},
+].filter(g=>IMG[g.img]);
+(function(){
+  const gal=document.getElementById('fl-gal'); if(!gal) return;
+  const stage=gal.querySelector('.fl-stage'), thumbs=gal.querySelector('.fl-thumbs'), count=gal.querySelector('.fl-count'), legend=document.getElementById('fl-legend');
+  const prevBtn=gal.querySelector('.fl-nav.prev');
+  const slides=[stage.querySelector('.fl-slide')];
+  FL_GAL.slice(1).forEach(g=>{
+    const f=document.createElement('figure'); f.className='fl-photo fl-slide'+(g.fit==='contain'?' contain':'');
+    f.innerHTML=(g.fit==='contain'?'<img class="bg" alt="" aria-hidden="true">':'')+'<img class="main">'+(g.cap?'<figcaption></figcaption>':'');
+    f.querySelectorAll('img').forEach(im=>im.src=IMG[g.img]); f.querySelector('img.main').alt=g.alt;
+    if(g.cap) f.querySelector('figcaption').textContent=g.cap;
+    stage.insertBefore(f, prevBtn); slides.push(f);
+  });
+  let cur=0; const n=slides.length, pad=v=>String(v).padStart(2,'0');
+  const tb=FL_GAL.map((g,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-label','Фото '+(i+1)+': '+g.alt);
+    b.innerHTML='<img alt="">'; b.firstChild.src=IMG[g.img]; b.onclick=()=>go(i); thumbs.appendChild(b); return b; });
+  function go(i){ cur=(i+n)%n; slides.forEach((s,k)=>s.classList.toggle('on',k===cur)); tb.forEach((b,k)=>b.setAttribute('aria-selected',String(k===cur)));
+    count.textContent=pad(cur+1)+' / '+pad(n); if(legend) legend.hidden=cur!==0;
+    const t=tb[cur]; if(t) thumbs.scrollTo({left:t.offsetLeft-thumbs.clientWidth/2+t.offsetWidth/2,behavior:'smooth'}); }
+  prevBtn.onclick=()=>go(cur-1); gal.querySelector('.fl-nav.next').onclick=()=>go(cur+1);
+  stage.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft'){go(cur-1);e.preventDefault();} if(e.key==='ArrowRight'){go(cur+1);e.preventDefault();} });
+  let x0=null; stage.addEventListener('pointerdown',e=>{x0=e.clientX}); stage.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0; x0=null; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1)); });
+  if(n<2){ gal.querySelectorAll('.fl-nav,.fl-count').forEach(el=>el.hidden=true); thumbs.hidden=true; }
+  go(0);
+})();
+
 const $=id=>document.getElementById(id);
 
 /* ---------- products: the one card ---------- */
