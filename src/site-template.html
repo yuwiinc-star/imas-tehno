@@ -210,6 +210,16 @@
   .pcard .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;color:var(--red);white-space:nowrap}
   .pcard .go::after{content:"→";transition:transform .2s}
   .pcard:hover .go::after{transform:translateX(4px)}
+  .pcard.feat-card{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:0;padding:0;overflow:hidden}
+  .pcard.feat-card .fpic{position:relative;min-height:380px;background:#E9E9E6}
+  .pcard.feat-card .fpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transition:transform .5s ease}
+  .pcard.feat-card:hover .fpic img{transform:scale(1.03)}
+  .pcard.feat-card .fbody{display:flex;flex-direction:column;gap:14px;padding:28px 32px 26px}
+  .pcard.feat-card .hd{min-height:0}
+  .pcard.feat-card h3{font-size:clamp(1.3rem,1.8vw,1.75rem)}
+  .pcard .pdesc{margin:0;color:var(--txt-2);font-size:15px;line-height:1.5;max-width:52ch}
+  .pcard.feat-card .st div{font-size:14px;padding:9px 0}
+  @media(max-width:760px){.pcard.feat-card{grid-template-columns:1fr}.pcard.feat-card .fpic{min-height:0;aspect-ratio:4/3}.pcard.feat-card .fbody{padding:20px}}
   @media(max-width:1300px){.catgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:1100px){.catwrap{grid-template-columns:1fr;gap:20px}.catnav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px}.catnav .lbl{display:none}.chip{background:var(--card)}}
   @media(max-width:640px){.catgrid{grid-template-columns:1fr}}
@@ -807,7 +817,7 @@ const $=id=>document.getElementById(id);
 
 /* ---------- products: the one card ---------- */
 const P=[
- {id:'ayveri', link:true, cat:'Протравливание', name:'Протравитель семян Айвери', img:'cut-ayveri', v:'6,5', u:'т/ч',
+ {id:'ayveri', link:true, cat:'Протравливание', name:'Протравитель семян Айвери', img:'cut-ayveri', photo:'кат-айвери', v:'6,5', u:'т/ч',
   desc:'Порционная протравочная машина: протравливание, инкрустация, дражирование и подсушка семян.',
   specs:[['Производительность','до 6,5 т/ч'],['Модели','R-700 · R-900'],['Дозаторы','4 жидких + 2 сухих']]},
  {id:'zet', cat:'Транспортировка', name:'Транспортёр с качающимися ковшами', img:null, v:'20', u:'м³/ч',
@@ -839,8 +849,10 @@ function row(p){
   const a=document.createElement('a'); a.className='pcard'; a.dataset.cat=p.cat;
   a.href=p.link?'#/'+p.id:'#/kontakty';
   const specs=p.specs.map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join('');
-  a.innerHTML=`<div class="hd"><span class="cat">${p.cat}</span><h3>${p.name}</h3></div><div class="st">${specs}</div>
+  const body=`<div class="hd"><span class="cat">${p.cat}</span><h3>${p.name}</h3></div>${p.photo&&p.desc?`<p class="pdesc">${p.desc}</p>`:''}<div class="st">${specs}</div>
   <div class="ft"><span class="go">${p.link?'Подробнее':(p.cta||'Запросить цену')}</span></div>`;
+  if(p.photo&&IMG[p.photo]){ a.classList.add('feat-card'); a.innerHTML=`<div class="fpic"><img alt="${p.name}"></div><div class="fbody">${body}</div>`; a.querySelector('.fpic img').src=IMG[p.photo]; }
+  else a.innerHTML=body;
   return a;
 }
 function renderList(key,items){
