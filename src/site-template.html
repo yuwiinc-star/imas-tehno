@@ -102,7 +102,7 @@
   .phero .cut img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.18))}
   .phero h1{max-width:14ch}
   @media(max-width:900px){.phero{grid-template-columns:1fr;min-height:0}.phero .cut{order:-1;aspect-ratio:3/2}}
-  .hero .quick{position:relative;width:var(--w);margin:0 auto;padding-bottom:64px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hero .quick{position:relative;width:var(--w);margin:0 auto;padding-bottom:calc(32px + clamp(48px,7vh,88px));display:grid;grid-template-columns:1fr 1fr;gap:56px}
   .hero .qgroup{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:end;position:relative}
   .hero .qgroup.srv::before{content:"";position:absolute;left:-28px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.22) 30%,rgba(255,255,255,.22) 70%,rgba(255,255,255,0))}
   .hero .ql{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin-bottom:4px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.4vw,21px);letter-spacing:-.01em;color:#fff}
