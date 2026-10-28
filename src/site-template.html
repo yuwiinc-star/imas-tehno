@@ -419,6 +419,9 @@
   .fl-plate-ft{display:flex;flex-wrap:wrap;gap:6px 28px;padding:12px 26px 14px;border-top:1px solid var(--rule);background:#FAFAF8;border-radius:0 0 15px 15px;font-size:13px;color:var(--muted)}
   .fl-plate-ft b{font-weight:600;color:var(--txt);font-variant-numeric:tabular-nums;margin-left:4px}
   @media(max-width:640px){.fl-plate .fl-key div{padding:16px 18px}.fl-plate .fl-key div:nth-child(3){border-left:0;padding-left:18px}.fl-plate .fl-key div:nth-child(n+3){border-top:1px solid var(--rule)}.fl-plate-hd,.fl-plate-ft{padding-left:20px;padding-right:20px}}
+  .flagship.flagship-2{margin-top:0;border-radius:0;z-index:auto}
+  .fl-key.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media(max-width:640px){.fl-key.three{grid-template-columns:1fr 1fr}.fl-key.three div:nth-child(3){grid-column:1/-1}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -644,8 +647,52 @@
     </div>
   </div></section>
 
+  <!-- 3b: дозаторы МЕРА -->
+  <section class="sec flagship flagship-2" aria-labelledby="mr-name"><div class="w">
+    <div class="fl-layout">
+      <div class="fl-gal" id="mr-gal" aria-roledescription="галерея" aria-label="Фото дозаторов МЕРА">
+        <div class="fl-stage" tabindex="0">
+          <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-мера-станция" alt="Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга"></figure>
+          <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
+          <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
+          <span class="fl-count" aria-live="polite">01 / 01</span>
+        </div>
+        <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
+      </div>
+      <div class="fl-info">
+        <div class="fl-top">
+          <div>
+            <div class="mono">Фасовка · весовые дозаторы</div>
+            <h2 class="fl-name" id="mr-name">Дозаторы МЕРА</h2>
+          </div>
+          <div class="fl-side">
+            <p>Фасовка зерна, семян и других сыпучих продуктов в биг‑бэги и мешки. Работают отдельно или в составе автоматизированной линии.</p>
+            <div class="acts"><a class="btn primary" href="#/kontakty">Запросить цену <span class="plus">+</span></a><a class="btn ghost" href="#/katalog">Всё оборудование <span class="plus">→</span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="fl-data">
+        <div class="fl-plate" role="group" aria-label="Технические данные дозаторов МЕРА">
+          <div class="fl-plate-hd"><span>Технические данные</span><span>Дозаторы <b>МЕРА</b></span></div>
+          <dl class="fl-key three">
+            <div><dt>Порция в биг‑бэг</dt><dd>до 1000<small>кг</small></dd></div>
+            <div><dt>Порция в мешок</dt><dd>до 80<small>кг</small></dd></div>
+            <div><dt>Запас прочности</dt><dd>3<small>×</small></dd></div>
+          </dl>
+          <div class="fl-plate-ft"><span>Модели <b>МЕРА‑1000, МЕРА‑80</b></span><span>Режимы <b>автоматический и ручной</b></span><span>Тара <b>биг‑бэги, мешки</b></span></div>
+        </div>
+        <ul class="fl-feat">
+          <li><b>Высокая точность дозирования</b><span>Каждая порция взвешивается перед сбросом в тару.</span></li>
+          <li><b>Защита от перегрузки</b><span>Защищает от перегрузки и от сброса наполненных мешков.</span></li>
+          <li><b>Удобная панель управления</b><span>Автоматический режим или ручное управление оператором.</span></li>
+          <li><b>Прочная металлическая конструкция</b><span>Запас прочности механизмов в 3 раза выше нагрузки, отвечает требованиям техники безопасности.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
   <!-- 4 -->
-  <section class="sec"><div class="w"><div class="blk">
+  <section class="sec white"><div class="w"><div class="blk">
     <div class="bhead"><div><div class="mono">Производство</div><h2>Собственное производство в Воронеже</h2></div><a class="lnk" href="#/o-kompanii"><span>О компании</span><span>→</span></a></div>
     <div class="prod">
       <div class="txt">
@@ -868,12 +915,12 @@ const FL_GAL=[
   {img:'гал-айвери-привод', fit:'contain', alt:'Приводы и воздуходувка под камерой смешивания'},
   {img:'гал-айвери-крышка', fit:'contain', alt:'Верх камеры смешивания под загрузочным бункером'},
 ].filter(g=>IMG[g.img]);
-(function(){
-  const gal=document.getElementById('fl-gal'); if(!gal) return;
-  const stage=gal.querySelector('.fl-stage'), thumbs=gal.querySelector('.fl-thumbs'), count=gal.querySelector('.fl-count'), legend=document.getElementById('fl-legend');
+function mkGal(id, LIST){
+  const gal=document.getElementById(id); if(!gal||!LIST.length) return;
+  const stage=gal.querySelector('.fl-stage'), thumbs=gal.querySelector('.fl-thumbs'), count=gal.querySelector('.fl-count'), legend=null;
   const prevBtn=gal.querySelector('.fl-nav.prev');
   const slides=[stage.querySelector('.fl-slide')];
-  FL_GAL.slice(1).forEach(g=>{
+  LIST.slice(1).forEach(g=>{
     const f=document.createElement('figure'); f.className='fl-photo fl-slide'+(g.fit==='contain'?' contain':'');
     f.innerHTML=(g.fit==='contain'?'<img class="bg" alt="" aria-hidden="true">':'')+'<img class="main">'+(g.cap?'<figcaption></figcaption>':'');
     f.querySelectorAll('img').forEach(im=>im.src=IMG[g.img]); f.querySelector('img.main').alt=g.alt;
@@ -881,7 +928,7 @@ const FL_GAL=[
     stage.insertBefore(f, prevBtn); slides.push(f);
   });
   let cur=0; const n=slides.length, pad=v=>String(v).padStart(2,'0');
-  const tb=FL_GAL.map((g,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-label','Фото '+(i+1)+': '+g.alt);
+  const tb=LIST.map((g,i)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-label','Фото '+(i+1)+': '+g.alt);
     b.innerHTML='<img alt="">'; b.firstChild.src=IMG[g.img]; b.onclick=()=>go(i); thumbs.appendChild(b); return b; });
   function go(i){ cur=(i+n)%n; slides.forEach((s,k)=>s.classList.toggle('on',k===cur)); tb.forEach((b,k)=>b.setAttribute('aria-selected',String(k===cur)));
     count.textContent=pad(cur+1)+' / '+pad(n); if(legend) legend.hidden=cur!==0;
@@ -891,7 +938,14 @@ const FL_GAL=[
   let x0=null; stage.addEventListener('pointerdown',e=>{x0=e.clientX}); stage.addEventListener('pointerup',e=>{ if(x0===null) return; const dx=e.clientX-x0; x0=null; if(Math.abs(dx)>40) go(cur+(dx<0?1:-1)); });
   if(n<2){ gal.querySelectorAll('.fl-nav,.fl-count').forEach(el=>el.hidden=true); thumbs.hidden=true; }
   go(0);
-})();
+}
+const MR_GAL=[
+  {img:'гал-мера-станция', alt:'Станция фасовки МЕРА с бункером, норией и подъёмным столом для биг‑бэга'},
+  {img:'гал-мера-подвес', alt:'Узел подвеса биг‑бэга с пневмозахватами под весовым бункером МЕРА'},
+  {img:'гал-мера-рукав', alt:'Загрузочный рукав и держатель горловины биг‑бэга'},
+  {img:'гал-мера-нория', alt:'Дозатор МЕРА в линии с норией подачи'},
+].filter(g=>IMG[g.img]);
+mkGal('fl-gal', FL_GAL); mkGal('mr-gal', MR_GAL);
 
 const $=id=>document.getElementById(id);
 
