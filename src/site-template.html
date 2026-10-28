@@ -102,7 +102,7 @@
   .phero .cut img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.18))}
   .phero h1{max-width:14ch}
   @media(max-width:900px){.phero{grid-template-columns:1fr;min-height:0}.phero .cut{order:-1;aspect-ratio:3/2}}
-  .hero .quick{position:relative;width:var(--w);margin:0 auto;padding-bottom:24px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .hero .quick{position:relative;width:var(--w);margin:0 auto;padding-bottom:64px;display:grid;grid-template-columns:1fr 1fr;gap:56px}
   .hero .qgroup{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:end;position:relative}
   .hero .qgroup.srv::before{content:"";position:absolute;left:-28px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.22) 30%,rgba(255,255,255,.22) 70%,rgba(255,255,255,0))}
   .hero .ql{grid-column:1/-1;display:flex;align-items:center;gap:14px;margin-bottom:4px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.4vw,21px);letter-spacing:-.01em;color:#fff}
@@ -291,12 +291,16 @@
 
 
   /* ============ флагман: фото с выносками, цифры, шкала линейки ============ */
+  /* мягкий шов: светлый блок наезжает на видео скруглённым листом */
+  .flagship{position:relative;z-index:2;margin-top:-32px;border-radius:32px 32px 0 0}
+  @media(max-width:760px){.flagship{margin-top:-22px;border-radius:22px 22px 0 0}}
+
   .flagship .fl-top{display:block;margin-bottom:32px}
   .flagship .fl-side{display:flex;align-items:center;justify-content:flex-start;gap:20px 48px;flex-wrap:wrap;margin-top:22px}
   .flagship .fl-side .acts{flex-wrap:wrap}
   .flagship .btn.ghost{background:transparent;border-color:var(--rule-h);color:var(--txt)}.flagship .btn.ghost:hover{background:var(--txt);border-color:var(--txt);color:var(--bg)}
-  .fl-name{font-family:var(--display);font-weight:700;font-size:clamp(2.4rem,4.8vw,5.2rem);line-height:.95;letter-spacing:-.03em;margin:14px 0 0;text-wrap:nowrap}
-  .fl-name span{color:var(--red)}
+  .fl-name{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,2.8vw,3.3rem);line-height:1.05;letter-spacing:-.015em;margin:14px 0 0;text-wrap:nowrap}
+  .fl-name span{color:inherit}
   .fl-side p{margin:0;color:var(--txt-2);font-size:clamp(15px,1.05vw,17px);line-height:1.55;max-width:56ch}
   .fl-photo{position:relative;margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:#2a2d28;--vis:.844;--off:.094}
   .fl-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
@@ -780,13 +784,10 @@ document.querySelectorAll('img[data-img]').forEach(i=>{ if(IMG[i.dataset.img]) i
 /* ---------- галерея флагмана: чтобы добавить фото, положите файл в src/assets и допишите строку ---------- */
 const FL_GAL=[
   {img:'гал-айвери-главное', alt:'Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью'},
-  {img:'айвери-линия-крупно', alt:'Протравитель Айвери R‑700 в линии с ёмкостями смешивания и дозирующей ёмкостью'},
   {img:'гал-айвери-бок', fit:'contain', alt:'Айвери сбоку: бункер, камера смешивания, пневматика'},
   {img:'гал-айвери-камера', fit:'contain', alt:'Камера смешивания Айвери крупным планом'},
   {img:'гал-айвери-привод', fit:'contain', alt:'Приводы и воздуходувка под камерой смешивания'},
   {img:'гал-айвери-крышка', fit:'contain', alt:'Верх камеры смешивания под загрузочным бункером'},
-  {img:'гал-линия-общий-вид', alt:'Линия протравливания целиком: ёмкости смешивания, дозирующая ёмкость, Айвери и нории'},
-  {img:'гал-дозирующая-емкость', fit:'contain', alt:'Дозирующая ёмкость на тензодатчике с перистальтическим насосом'},
 ].filter(g=>IMG[g.img]);
 (function(){
   const gal=document.getElementById('fl-gal'); if(!gal) return;
