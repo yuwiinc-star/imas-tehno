@@ -402,7 +402,7 @@
   .fl-note{margin:0;font-size:12px;line-height:1.45;color:var(--muted-l)}
   @media(max-width:1180px){.fl-cmp{grid-template-columns:1fr}}
   @media(max-width:640px){.fl-key{grid-template-columns:1fr 1fr}.fl-key div:nth-child(3){border-left:0;padding-left:0}.fl-key div:nth-child(n+3){border-top:1px solid var(--rule-l)}.fl-feat{grid-template-columns:1fr}.fl-cmp-row{grid-template-columns:84px minmax(0,1fr) 66px}}
-  .fl-layout{grid-template-areas:"gal top" "gal data";grid-template-rows:auto 1fr;row-gap:0}
+  .fl-layout{grid-template-areas:"gal ." "gal top" "gal data" "gal .";grid-template-rows:1fr auto auto 1fr;row-gap:0}
   .fl-layout .fl-gal{grid-area:gal}.fl-layout .fl-info{grid-area:top}.fl-layout .fl-data{grid-area:data}
   @media(max-width:900px){.fl-layout{grid-template-columns:1fr;grid-template-areas:"top" "gal" "data";row-gap:28px}.fl-layout .fl-gal{order:0}.fl-info{order:0}.fl-data{margin-top:4px}}
   /* ============ split: photo + text ============ */
@@ -610,23 +610,11 @@
         </div>
       </div>
       <div class="fl-data">
-        <div class="fl-cmp" role="group" aria-label="Сравнение с аналогичными машинами">
-        <div class="fl-cmp-item">
-        <div class="fl-cmp-hd"><span>Потребляемая мощность</span><b>в 2,4 раза меньше</b></div>
-        <div class="fl-cmp-row me"><span>R‑700</span><div class="bar"><i style="--p:41.3%"></i></div><em>6,2 кВт</em></div>
-        <div class="fl-cmp-row"><span>Аналоги</span><div class="bar"><i style="--p:100%"></i></div><em>15 кВт</em></div>
-        </div>
-        <div class="fl-cmp-item">
-        <div class="fl-cmp-hd"><span>Рабочий раствор на сое</span><b>на 22% меньше</b></div>
-        <div class="fl-cmp-row me"><span>R‑700</span><div class="bar"><i style="--p:77.8%"></i></div><em>3,5 л/т</em></div>
-        <div class="fl-cmp-row"><span>Аналоги</span><div class="bar"><i style="--p:100%"></i></div><em>от 4,5 л/т</em></div>
-        </div>
-        </div>
         <dl class="fl-key">
         <div><dt>Производительность</dt><dd>6,5<small>т/ч</small></dd></div>
         <div><dt>Объём партии</dt><dd>55<small>л</small></dd></div>
         <div><dt>Дозаторы жидк. + сух.</dt><dd>4+2</dd></div>
-        <div><dt>Диаметр ротора</dt><dd>700<small>мм</small></dd></div>
+        <div><dt>Потребляемая мощность</dt><dd>6,2<small>кВт</small></dd></div>
         </dl>
         <ul class="fl-feat">
         <li><b>Перемешивание «восьмёркой»</b><span>Лопатки направляют поток семян к центру, препарат ложится равномерно.</span></li>
@@ -634,7 +622,6 @@
         <li><b>Подсушка в той же камере</b><span>Вихревая воздуходувка, семена выходят сыпучими, без комков.</span></li>
         <li><b>Футеровка PE‑1000</b><span>Износостойкий пластик ротора и статора, замена быстрая и простая.</span></li>
         </ul>
-        <p class="fl-note">Сравнение по данным ИМАС‑Техно для машин той же производительности. Расход раствора: соя, препараты Максим Голд и Вайбранс.</p>
       </div>
     </div>
   </div></section>
