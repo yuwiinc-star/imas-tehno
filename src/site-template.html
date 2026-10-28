@@ -50,7 +50,7 @@
   .nav .lft{display:flex;align-items:center;gap:20px}
   .nav .mid{display:flex;align-items:center;flex:1;justify-content:center}
   @media(max-width:900px){.nav .catbtn{display:none}}
-    .burger{display:none;background:none;border:1px solid var(--rule);color:var(--txt);width:40px;height:40px;cursor:pointer;font-size:18px;line-height:1}
+    .burger{display:none;background:rgba(20,21,20,.45);border:1px solid rgba(255,255,255,.35);border-radius:10px;color:#fff;width:44px;height:44px;cursor:pointer;font-size:20px;line-height:1;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .menu{display:none}
   @media(max-width:900px){.nav .mid,.nav .rgt{display:none}.burger{display:block}
     .menu{display:none;position:fixed;inset:var(--navh) 0 0;background:var(--ink);color:#F2F2F0;z-index:29;padding:24px clamp(20px,5vw,80px);flex-direction:column;gap:6px}
@@ -96,7 +96,7 @@
   .hero .media img,.hero .media video{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block}
   .hero.compact{min-height:0;background:transparent}
   .hero.compact .in{padding-top:72px}
-  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,16,16,.6) 0%,rgba(15,16,16,.15) 30%,rgba(15,16,16,.85) 78%,rgba(15,16,16,.98) 100%)}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,16,16,.6) 0%,rgba(15,16,16,.2) 28%,rgba(15,16,16,.55) 56%,rgba(15,16,16,.7) 100%),linear-gradient(90deg,rgba(15,16,16,.45) 0%,rgba(15,16,16,0) 55%)}
   .phero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center;padding:28px 0 20px;min-height:min(72vh,680px)}
   .phero .cut{width:100%;aspect-ratio:4/3;display:grid;place-items:center}
   .phero .cut img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 18px 28px rgba(0,0,0,.18))}
@@ -109,20 +109,23 @@
   .hero .ql::before{content:"";width:8px;height:8px;border-radius:2px;background:#fff;transform:rotate(45deg);flex:none}
   .hero .ql::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.22)}
   .hero .qgroup.srv .ql{color:#FF9B93}.hero .qgroup.srv .ql::before{background:#E23D31}.hero .qgroup.srv .ql::after{background:rgba(226,61,49,.5)}
-  .hero .qgroup.srv a{border-color:rgba(226,61,49,.32)}
-  .hero .qgroup.srv a:hover{border-color:rgba(226,61,49,.6)}
-  .hero .qgroup.srv a i{background:rgba(226,61,49,.28)}
-  @media(max-width:1200px){.hero .qgroup.srv::before{left:0;right:0;top:-28px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.22) 30%,rgba(255,255,255,.22) 70%,rgba(255,255,255,0))}}
-  .hero .quick a{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:132px;padding:20px 22px;border-radius:var(--r);background:rgba(20,21,20,.55);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;position:relative;transition:background .2s,border-color .2s,transform .2s}
-  .hero .quick a:hover{background:rgba(35,36,35,.7);border-color:rgba(255,255,255,.28);transform:translateY(-2px)}
-  .hero .quick a i{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-style:normal}
+  .hero .quick a{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:196px;padding:20px 22px;border-radius:var(--r);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);color:#fff;position:relative;overflow:hidden;transition:background .2s,border-color .2s,transform .2s}
+  .hero .quick a:hover{background:rgba(255,255,255,.17);border-color:rgba(255,255,255,.45);transform:translateY(-2px)}
+  .hero .quick a b{font-weight:600;font-size:16px;line-height:1.2;display:block;position:relative}
+  .hero .quick a b::after{content:"→";display:inline-block;margin-left:6px;font-weight:400;opacity:.6;transition:transform .2s,opacity .2s}
+  .hero .quick a:hover b::after{transform:translateX(4px);opacity:1}
+  .hero .quick a span{font-size:14px;color:rgba(255,255,255,.78);line-height:1.35;position:relative}
+  .hero .quick a .pic{position:absolute;top:14px;right:14px;width:64%;height:84px;display:flex;justify-content:flex-end;align-items:flex-start;pointer-events:none}
+  .hero .quick a .pic img{height:100%;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}
+  .hero .quick a .pic svg{height:100%;width:auto;max-width:100%}
+  .hero .quick a i{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;font-style:normal}
   .hero .quick a i svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-  .hero .quick a b{font-weight:600;font-size:16px;line-height:1.2}
-  .hero .quick a span{font-size:14px;color:#C9C9C5;line-height:1.35}
-  .hero .quick a .tag{position:absolute;top:22px;left:22px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:20px;background:rgba(226,61,49,.25);color:#FF9B93}
-  @media(max-width:1200px){.hero .quick{grid-template-columns:1fr;gap:56px}.hero .quick a{min-height:140px}}
+  .hero .qgroup.srv a{background:rgba(226,61,49,.12);border-color:rgba(226,61,49,.5)}
+  .hero .qgroup.srv a:hover{background:rgba(226,61,49,.2);border-color:rgba(255,120,110,.8)}
+  .hero .qgroup.srv a i{background:#E23D31}
+  @media(max-width:1200px){.hero .quick{grid-template-columns:1fr;gap:56px}.hero .quick a{min-height:176px}}
   @media(max-width:760px){.hero .qgroup{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:520px){.hero .qgroup{grid-template-columns:1fr}.hero .quick a{min-height:0}}
+  @media(max-width:520px){.hero .qgroup{grid-template-columns:1fr}.hero .quick a{min-height:92px;padding-right:110px;justify-content:center}.hero .quick a .pic{top:10px;bottom:10px;right:12px;width:90px;height:auto;align-items:center}.hero .quick a i{top:50%;transform:translateY(-50%)}}
   .hero .in{position:relative;align-self:center;padding:calc(var(--navh) + 40px) 0 clamp(36px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 48px;align-items:end}
   .hero .nums{display:flex;gap:clamp(18px,2.5vw,40px);flex-wrap:wrap;margin-bottom:28px}
   .hero .nums div{padding-left:14px;border-left:2px solid rgba(226,61,49,.6)}
@@ -431,14 +434,14 @@
     </div>
     <div class="quick">
       <div class="qgroup"><div class="ql">Оборудование</div>
-<a href="#/ayveri"><b>Протравители семян</b><span>Порционные машины Айвери, от 1 до 10 т/ч</span></a>
-      <a href="#/katalog"><b>Транспортёры</b><span>С качающимися ковшами, бережно к семенам</span></a>
-      <a href="#/katalog"><b>Весовые дозаторы</b><span>Фасовка в мешки и биг-бэги, МЕРА</span></a>
+<a href="#/ayveri"><div class="pic"><img data-img="cut-ayveri" alt=""></div><b>Протравители семян</b><span>Порционные машины Айвери, от 1 до 10 т/ч</span></a>
+      <a href="#/katalog"><div class="pic">{{ZSVGD}}</div><b>Транспортёры</b><span>С качающимися ковшами, бережно к семенам</span></a>
+      <a href="#/katalog"><div class="pic"><img data-img="cut-mera" alt=""></div><b>Весовые дозаторы</b><span>Фасовка в мешки и биг-бэги, МЕРА</span></a>
       </div>
       <div class="qgroup srv"><div class="ql">Услуги</div>
-      <a href="#/uslugi"><b>Подготовка семян</b><span>Полный цикл на нашей площадке</span></a>
-      <a href="#/uslugi"><b>Протравливание партий</b><span>До четырёх компонентов за цикл</span></a>
-      <a href="#/uslugi"><b>Монтаж и сервис</b><span>Пусконаладка по всей России</span></a>
+      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M12 9c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 9c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 14c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 14c3 0 5-2 5-5-3 0-5 2-5 5z"/><path d="M12 19c-3 0-5-2-5-5 3 0 5 2 5 5z"/><path d="M12 19c3 0 5-2 5-5-3 0-5 2-5 5z"/></svg></i><b>Подготовка семян</b><span>Полный цикл на нашей площадке</span></a>
+      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/><ellipse cx="12" cy="14" rx="1.6" ry="2.6"/></svg></i><b>Протравливание партий</b><span>До четырёх компонентов за цикл</span></a>
+      <a href="#/uslugi"><i><svg viewBox="0 0 24 24"><path d="M21 6.5a4.5 4.5 0 0 1-6 4.2L7 18.7a2 2 0 0 1-2.8-2.8L12.3 8a4.5 4.5 0 0 1 5.7-5.5l-2.7 2.7 1.5 1.5L19.5 4A4.5 4.5 0 0 1 21 6.5z"/></svg></i><b>Монтаж и сервис</b><span>Пусконаладка по всей России</span></a>
       </div>
     </div>
   </section>
@@ -695,6 +698,7 @@
 const IMG={{IMGS}};
 const TREATER='{{TREATER}}';
 const ZSVG=`{{ZSVG}}`;
+document.querySelectorAll('img[data-img]').forEach(i=>{ if(IMG[i.dataset.img]) i.src=IMG[i.dataset.img]; });
 const $=id=>document.getElementById(id);
 
 /* ---------- products: the one card ---------- */

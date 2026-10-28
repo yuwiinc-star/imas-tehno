@@ -17,7 +17,7 @@ imgs={}
 for f in os.listdir(assets):
     k=unicodedata.normalize('NFC',f); 
     if k.endswith('.jpg') or k.endswith('.png'): imgs[k.rsplit('.',1)[0].replace('render-','render:')]=img(k.rsplit('.',1)[0].replace('render-','render:'))
-t=t.replace('{{LOGO}}',logo).replace('{{IMGS}}',json.dumps(imgs,ensure_ascii=False)).replace('{{ZSVG}}',zsvg_light())
+t=t.replace('{{LOGO}}',logo).replace('{{IMGS}}',json.dumps(imgs,ensure_ascii=False)).replace('{{ZSVG}}',zsvg_light()).replace('{{ZSVGD}}',zsvg_dark())
 t=re.sub(r'\{\{IMG:([^}]+)\}\}', lambda m: img(m.group(1)), t)
 t=t.replace('{{TREATER}}', b(os.path.join(assets,'treater.glb')))
 vid=os.path.join(assets,'hero.mp4')
