@@ -354,6 +354,25 @@
   .fl-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
   @media(max-width:900px){.fl-stage{aspect-ratio:3/2;--vis:1;--off:0}.fl-nav{width:40px;height:40px;font-size:17px}.fl-nav.prev{left:10px}.fl-nav.next{right:10px}.fl-thumbs button{width:84px}}
   @media(prefers-reduced-motion:reduce){.fl-slide,.fl-slide.on{transition:none}}
+  /* флагман: вертикальная галерея слева, описание и цифры справа */
+  .fl-layout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(32px,4.5vw,72px);align-items:center}
+  .fl-layout .fl-gal{width:clamp(300px,30vw,460px)}
+  .fl-layout .fl-stage{aspect-ratio:2/3;--vis:1;--off:0;background:#E7E7E3}
+  .fl-layout .fl-slide img.main,.fl-layout .fl-slide img{object-fit:cover}
+  .fl-layout .fl-slide.contain img.main{object-fit:contain}
+  .fl-layout .fl-slide img.bg{display:none}
+  .fl-layout .fl-photo::after{display:none}
+  .fl-layout .fl-photo{background:#E7E7E3}
+  .fl-layout .fl-thumbs button{width:64px;aspect-ratio:2/3}
+  .fl-layout .fl-nav{width:42px;height:42px;font-size:18px}.fl-layout .fl-nav.prev{left:12px}.fl-layout .fl-nav.next{right:12px}
+  .fl-info .fl-top{margin-bottom:0}
+  .fl-info .fl-side{display:block;margin-top:18px}
+  .fl-info .fl-side p{margin-bottom:24px}
+  .fl-info .fl-specs{grid-template-columns:1fr 1fr;margin-top:40px}
+  .fl-info .fl-specs div:nth-child(3){border-left:0;padding-left:0}
+  .fl-info .fl-specs div:nth-child(n+3){border-top:1px solid var(--rule-l)}
+  .fl-info .fl-specs div{padding-bottom:20px}
+  @media(max-width:900px){.fl-layout{grid-template-columns:1fr;gap:28px}.fl-layout .fl-gal{width:100%;max-width:440px;margin:0 auto;order:2}.fl-info{order:1}.fl-layout .fl-stage{aspect-ratio:2/3}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
@@ -536,6 +555,17 @@
 
   <!-- 3: флагман Айвери 700 -->
   <section class="sec white flagship" aria-labelledby="fl-name"><div class="w">
+    <div class="fl-layout">
+    <div class="fl-gal" id="fl-gal" aria-roledescription="галерея" aria-label="Фото Айвери">
+      <div class="fl-stage" tabindex="0">
+        <figure class="fl-photo fl-slide on"><img class="main" data-img="гал-айвери-главное" alt="Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью"></figure>
+        <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
+        <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
+        <span class="fl-count" aria-live="polite">01 / 01</span>
+      </div>
+      <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
+    </div>
+      <div class="fl-info">
     <div class="fl-top">
       <div>
         <div class="mono">Флагман · порционный протравитель</div>
@@ -546,24 +576,14 @@
         <div class="acts"><a class="btn primary" href="#/ayveri">Подробнее об Айвери <span class="plus">→</span></a><a class="btn ghost" href="#/kontakty">Запросить цену <span class="plus">+</span></a></div>
       </div>
     </div>
-
-    <div class="fl-gal" id="fl-gal" aria-roledescription="галерея" aria-label="Фото линии протравливания">
-      <div class="fl-stage" tabindex="0">
-        <figure class="fl-photo fl-slide contain on"><img class="bg" data-img="гал-айвери-главное" alt="" aria-hidden="true"><img class="main" data-img="гал-айвери-главное" alt="Протравитель Айвери R‑700 со шкафом управления и сенсорной панелью"></figure>
-        <button class="fl-nav prev" type="button" aria-label="Предыдущее фото">←</button>
-        <button class="fl-nav next" type="button" aria-label="Следующее фото">→</button>
-        <span class="fl-count" aria-live="polite">01 / 01</span>
-      </div>
-      <div class="fl-thumbs" role="tablist" aria-label="Выбор фото"></div>
-    </div>
-
     <dl class="fl-specs">
       <div><dt>Производительность</dt><dd>6,5<small>т/ч</small></dd></div>
       <div><dt>Объём партии</dt><dd>55<small>л</small></dd></div>
       <div><dt>Дозаторы, жидк. + сух.</dt><dd>4+2</dd></div>
       <div><dt>Потребляемая мощность</dt><dd>6,2<small>кВт</small></dd></div>
     </dl>
-
+      </div>
+    </div>
   </div></section>
 
   <!-- 4 -->
