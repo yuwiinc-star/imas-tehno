@@ -436,6 +436,20 @@
   .fl-plate .fl-feat span{font-size:13px;line-height:1.4;color:var(--muted)}
   .fl-plate-ft{padding:10px 22px 12px;font-size:12.5px}
   @media(max-width:640px){.fl-plate .fl-key div{padding:13px 16px}.fl-plate .fl-key div:nth-child(3){padding-left:16px}.fl-plate .fl-feat{padding:14px 16px;grid-template-columns:1fr}.fl-plate-hd,.fl-plate-ft{padding-left:16px;padding-right:16px}}
+  /* вертикальная карточка данных: третья колонка */
+  .fl-layout{grid-template-columns:auto minmax(0,1fr) minmax(300px,380px);grid-template-areas:"gal top data";grid-template-rows:auto;align-items:center;column-gap:clamp(28px,3.2vw,56px)}
+  .fl-layout .fl-gal{width:clamp(300px,27vw,420px)}
+  .fl-info .fl-side p{max-width:44ch}
+  .fl-data{margin-top:0}
+  .fl-plate .fl-key,.fl-plate .fl-key.three{grid-template-columns:1fr 1fr}
+  .fl-plate .fl-key div:nth-child(odd){border-left:0;padding-left:18px}
+  .fl-plate .fl-key div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .fl-plate .fl-key.three div:nth-child(3){grid-column:1/-1}
+  .fl-plate .fl-feat{grid-template-columns:1fr;gap:11px}
+  .fl-plate-ft{flex-direction:column;gap:3px}
+  .fl-plate-hd{flex-wrap:wrap}
+  @media(max-width:1240px){.fl-layout{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"gal top" "gal data";grid-template-rows:auto auto;align-content:center;row-gap:24px}.fl-data{max-width:460px}}
+  @media(max-width:900px){.fl-layout{grid-template-columns:1fr;grid-template-areas:"top" "gal" "data";row-gap:28px}.fl-layout .fl-gal{width:100%}.fl-data{max-width:none}}
   /* ============ split: photo + text ============ */
   .split{display:grid;grid-template-columns:1fr;gap:0;align-items:stretch;background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
   .split .pic{position:relative;min-height:320px;overflow:hidden;background:var(--sand-2)}
